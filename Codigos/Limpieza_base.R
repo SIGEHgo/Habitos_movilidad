@@ -328,4 +328,14 @@ orden = datos |>
 orden$`¿Con qué frecuencia realiza este viaje?_Hogar_Trabajo` |>  table()
 
 
+
+codigos = datos |> 
+  dplyr::group_by(`Código postal_Hogar_Trabajo`) |> 
+  dplyr::summarise(conteo = dplyr::n())
+
+codigos = codigos |>  dplyr::arrange(dplyr::desc(conteo))
+
+
+
+
 writexl::write_xlsx(orden, "Output/datos_filtrados.xlsx")
