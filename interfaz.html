@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hábitos de Movilidad</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: rgb(98, 17, 50);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            color: rgb(98, 17, 50);
+        }
+
+        header {
+            background-color: rgb(179, 142, 93);
+            height: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 0 1% 0%;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+        }
+
+        aside {
+            /* background-color: white; */
+            width: 10%;
+        }
+
+        section {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .arriba {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .mapa-interfaz {
+            width: 50%;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+            border-radius: 8px;
+            margin: 1% 0.5%;
+
+        }
+        .grafica_arriba_derecha {
+            width: 50%;
+            height: 100%;
+            background-color: white;
+            border-radius: 8px;
+            margin: 1% 0.5%;
+        }
+
+        .abajo {
+            display: flex;
+            flex: 1;
+        }
+        .grafica_abajo_izquierda, .grafica_abajo_centro, .grafica_abajo_derecha {
+            flex: 1;
+            margin: 1% 0.5%;
+            background-color: white;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        Hábitos de Movilidad en personas Servidoras Públicas
+        <img src="Img/Logotipo_Planeacion.png" style="width: 20%;">
+        <img src="Img/Logotipo_Movilidad.png" style="width: 20%;">
+
+
+    </header>
+
+    <main>
+        <aside>
+            Barra lateral
+        </aside>
+        <section>
+            <div class="arriba">
+                <div class="mapa-interfaz"> Mapa</div>
+                <div class="grafica_arriba_derecha"> </div>
+            </div>
+            <div class="abajo">
+                <div class="grafica_abajo_izquierda"></div>
+                <div class="grafica_abajo_centro"></div>
+                <div class="grafica_abajo_derecha"></div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
