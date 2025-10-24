@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hábitos de Movilidad</title>
+    <title>Hábitos de Movilidad en personas Servidoras Públicas</title>
+
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
 
     <style>
         * {
@@ -103,7 +107,9 @@
         </aside>
         <section>
             <div class="arriba">
-                <div class="mapa-interfaz"> Mapa</div>
+                <div class="mapa-interfaz"> 
+                    <div id="map" style="width: 100%; height: 100%;"></div>
+                </div>
                 <div class="grafica_arriba_derecha"> </div>
             </div>
             <div class="abajo">
@@ -113,5 +119,12 @@
             </div>
         </section>
     </main>
+
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>  
+
+     <script src="Js/mapa.js"></script>
+
 </body>
 </html>
