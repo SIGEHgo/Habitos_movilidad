@@ -261,8 +261,8 @@ datos = datos |>
   )
 
 
-write.csv(datos, "Output/base_ver2.csv", row.names = F, fileEncoding = "latin1")
-writexl::write_xlsx(datos, "Output/base_ver2.xlsx")
+write.csv(datos, "Output/base_filtrada_completa.csv", row.names = F)
+writexl::write_xlsx(datos, "Output/base_filtrada_completa_excel.xlsx")
 
 datos$Edad_Clasificacion |>  table()
 datos$Genero |>  table()

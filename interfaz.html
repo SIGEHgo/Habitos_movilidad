@@ -17,22 +17,19 @@
         }
     
         html,
-        body {
-            height: 100%;
-            font-family: Arial, sans-serif;
-        }
-    
+
         body {
             background-color: rgb(98, 17, 50);
             display: flex;
             flex-direction: column;
             height: 100vh;
+            width: 100vw;
             color: rgb(98, 17, 50);
         }
     
         header {
             background-color: rgb(179, 142, 93);
-            height: 10%;
+            height: 10vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -48,7 +45,7 @@
         }
     
         aside {
-            width: 10%;
+            width: 10vw;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -57,9 +54,9 @@
         .pill {
             background: #ffffff;
             border-radius: 999px;
-            padding: 10%;
-            width: 30%;
-            height: 50%;
+            padding: 1vw;
+            width: 3vw;
+            height: 45vh;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -99,41 +96,51 @@
         }
     
         section {
-            width: 90%;
+            width: 90vw;
+            height: 90vh;
             display: flex;
             flex-direction: column;
         }
     
         .arriba {
+            width: 90vw;
+            height: 45vh;
             flex: 1;
             display: flex;
             align-items: center;
         }
     
         .mapa-interfaz {
-            width: 50%;
-            height: 100%;
+            width: 45vw;
+            height: 45vh;
             background-color: rgb(255, 255, 255);
             border-radius: 8px;
-            margin: 1% 0.5%;
-    
+            margin-top: 1vh;
+            margin-bottom: 1vh;
+            margin-left: 1vw;
+            margin-right: 1vw;
         }
     
         #map {
-            width: 100%;
-            height: 100%;
+            width: 43vw;
+            height: 43vh;
             border-radius: 8px;
         }
     
         .grafica_arriba_derecha {
-            width: 50%;
-            height: 100%;
+            width: 45vw;
+            height: 45vh;
             background-color: white;
             border-radius: 8px;
-            margin: 1% 0.5%;
+            margin-top: 1vh;
+            margin-bottom: 1vh;
+            margin-left: 1vw;
+            margin-right: 1vw;
         }
     
         .abajo {
+            width: 90vw;
+            height: 45vh;
             display: flex;
             flex: 1;
         }
@@ -142,8 +149,19 @@
         .grafica_abajo_centro,
         .grafica_abajo_derecha {
             flex: 1;
-            margin: 1% 0.5%;
+            margin-top: 1vh;
+            margin-bottom: 1vh;
+            margin-left: 1vw;
+            margin-right: 1vw;
             background-color: white;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column; /* importante */
+        }
+
+        #edad_grafica_chart {
+            width: 28vw !important;
+            height: 43vh !important;
             border-radius: 8px;
         }
     </style>
@@ -188,10 +206,12 @@
                 <div class="mapa-interfaz"> 
                     <div id="map"></div>
                 </div>
-                <div class="grafica_arriba_derecha"> </div>
+                <div class="grafica_arriba_derecha"></div>
             </div>
             <div class="abajo">
-                <div class="grafica_abajo_izquierda"></div>
+                <div class="grafica_abajo_izquierda">
+                    <canvas id="edad_grafica_chart"></canvas>
+                </div>
                 <div class="grafica_abajo_centro"></div>
                 <div class="grafica_abajo_derecha"></div>
             </div>
@@ -204,6 +224,9 @@
      crossorigin=""></script>  
     <script src="Js/selector.js"></script>
     <script src="Js/mapa.js"></script>
+    <!-- Vamos importar graficas -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Chart.js -->
+    <script src="Js/edad_grafica.js"></script>
 
 </body>
 </html>
