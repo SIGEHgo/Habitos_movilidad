@@ -19,6 +19,8 @@
         html,
 
         body {
+            padding: 0;
+            margin: 0;
             background-color: rgb(98, 17, 50);
             display: flex;
             flex-direction: column;
@@ -30,6 +32,9 @@
         header {
             background-color: rgb(179, 142, 93);
             height: 10vh;
+            width: 100vw;
+            padding: 0;
+            margin: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -98,6 +103,8 @@
         section {
             width: 90vw;
             height: 90vh;
+            padding: 0;
+            margin: 0;
             display: flex;
             flex-direction: column;
         }
@@ -105,14 +112,17 @@
         .arriba {
             width: 90vw;
             height: 45vh;
+            padding: 0;
+            margin: 0;
             flex: 1;
             display: flex;
             align-items: center;
         }
     
         .mapa-interfaz {
-            width: 45vw;
-            height: 45vh;
+            width: 43vw;
+            height: 43vh;
+            padding: 0;
             background-color: rgb(255, 255, 255);
             border-radius: 8px;
             margin-top: 1vh;
@@ -124,12 +134,13 @@
         #map {
             width: 43vw;
             height: 43vh;
+            padding: 0;
             border-radius: 8px;
         }
     
         .grafica_arriba_derecha {
-            width: 45vw;
-            height: 45vh;
+            width: 43vw;
+            height: 43vh;
             background-color: white;
             border-radius: 8px;
             margin-top: 1vh;
@@ -141,6 +152,8 @@
         .abajo {
             width: 90vw;
             height: 45vh;
+            padding: 0;
+            margin: 0;
             display: flex;
             flex: 1;
         }
@@ -159,8 +172,13 @@
             flex-direction: column; /* importante */
         }
 
-        #edad_grafica_chart {
+        #edad_grafica {
             width: 28vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+        }
+        #dependencia_grafica {
+            width: 43vw !important;
             height: 43vh !important;
             border-radius: 8px;
         }
@@ -172,8 +190,6 @@
         Hábitos de Movilidad en personas Servidoras Públicas
         <img src="Img/Logotipo_Planeacion.png" style="width: 20%;">
         <img src="Img/Logotipo_Movilidad.png" style="width: 20%;">
-
-
     </header>
 
     <main>
@@ -206,14 +222,20 @@
                 <div class="mapa-interfaz"> 
                     <div id="map"></div>
                 </div>
-                <div class="grafica_arriba_derecha"></div>
+                <div class="grafica_arriba_derecha">
+                    <canvas id="dependencia_grafica"></canvas>
+                </div>
             </div>
             <div class="abajo">
                 <div class="grafica_abajo_izquierda">
-                    <canvas id="edad_grafica_chart"></canvas>
+                    <canvas id="edad_grafica"></canvas>
                 </div>
-                <div class="grafica_abajo_centro"></div>
-                <div class="grafica_abajo_derecha"></div>
+                <div class="grafica_abajo_centro">
+                    <!-- <canvas id="edad_grafica_chart"></canvas> -->
+                </div>
+                <div class="grafica_abajo_derecha">
+                    <!-- <canvas id="edad_grafica_chart"></canvas> -->
+                </div>
             </div>
         </section>
 
@@ -226,7 +248,10 @@
     <script src="Js/mapa.js"></script>
     <!-- Vamos importar graficas -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@3.1.0/dist/chartjs-chart-treemap.min.js"></script> <!-- Treemap -->
+
     <script src="Js/edad_grafica.js"></script>
+    <script src="Js/dependencia_grafica.js"></script>
 
 </body>
 </html>

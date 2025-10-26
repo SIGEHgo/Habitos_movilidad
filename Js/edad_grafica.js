@@ -1,4 +1,4 @@
-const ctx = document.getElementById('edad_grafica_chart');
+const ctx = document.getElementById('edad_grafica').getContext('2d');
 
 new Chart(ctx, {
   type: 'bar',
