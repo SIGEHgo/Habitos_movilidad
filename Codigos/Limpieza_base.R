@@ -307,7 +307,7 @@ write.csv(datos, "Output/base_ver.csv", row.names = F, fileEncoding = "latin1")
 orden = datos |> 
   dplyr::select(
     `Marca temporal`, `Dirección de correo electrónico`, Nombre,
-    Edad, Edad_Clasificacion, Dependencia, `¿Usted presenta alguna discapacidad?`,
+    Edad, Edad_Clasificacion, Genero,Dependencia, `¿Usted presenta alguna discapacidad?`,
     `¿Cuál es el horario típico de su primer viaje?_Homologado`, 
     `¿Con qué frecuencia realiza este viaje?_Hogar_Trabajo`,
     `¿Cuál es el tiempo de traslado que realiza a su lugar de trabajo?_Hogar_Trabajo`,

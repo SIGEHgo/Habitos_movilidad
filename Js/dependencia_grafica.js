@@ -1,3 +1,11 @@
+let datos_dependencia_grafica =  Object.entries(
+  datos.reduce((acc, d) => {
+    const clave = d.Dependencia;
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {})
+).map(([g, v]) => ({ g, v}));
+
 
 function color_dependencia_grafica(ctx) {
     if (ctx.type !== 'data') { return 'transparent'; }
@@ -36,29 +44,7 @@ new Chart(ctx2, {
     data: {
         datasets: [
             {
-            tree: [
-                {g: 'DIF Hidalgo', v: 48},
-                {g: 'Despacho del Gobernador', v: 17},
-                {g: 'Oficialía Mayor', v: 70},
-                {g: 'Otra', v: 86},
-                {g: 'Procuraduría General de Justicia del Estado de Hidalgo', v: 171},
-                {g: 'Secretaría de Agricultura y Desarrollo Rural', v: 10},
-                {g: 'Secretaría de Bienestar e Inclusión Social', v: 19},
-                {g: 'Secretaría de Contraloría', v: 17},
-                {g: 'Secretaría de Cultura', v: 11},
-                {g: 'Secretaría de Desarrollo Económico', v: 74},
-                {g: 'Secretaría de Educación Pública', v: 28},
-                {g: 'Secretaría de Gobierno', v: 192},
-                {g: 'Secretaría de Hacienda', v: 204},
-                {g: 'Secretaría de Infraestructura Pública y Desarrollo Urbano Sostenible', v: 72},
-                {g: 'Secretaría de Medio Ambiente y Recursos Naturales de Hidalgo', v: 127},
-                {g: 'Secretaría de Movilidad y Transporte', v: 71},
-                {g: 'Secretaría de Salud', v: 2},
-                {g: 'Secretaría de Seguridad Pública del Estado de Hidalgo', v: 7},
-                {g: 'Secretaría de Turismo', v: 10},
-                {g: 'Secretaría del Trabajo y Previsión Social', v: 76},
-                {g: 'Unidad de Planeación y Prospectiva', v: 77},
-            ],
+            tree: datos_dependencia_grafica,
             key: 'v',          
             groups: ['g'],  
             borderColor: 'green',

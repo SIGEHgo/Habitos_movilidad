@@ -48,6 +48,8 @@
             flex: 1;
             display: flex;
         }
+
+        /* Costado izquierdo */
     
         aside {
             width: 10vw;
@@ -100,6 +102,7 @@
             background: #5a0f22;
         }
     
+        /* Entorno principal */
         section {
             width: 90vw;
             height: 90vh;
@@ -172,16 +175,29 @@
             flex-direction: column; /* importante */
         }
 
-        #edad_grafica {
-            width: 28vw !important;
-            height: 43vh !important;
-            border-radius: 8px;
-        }
+        /* Primera pestaña */
         #dependencia_grafica {
             width: 43vw !important;
             height: 43vh !important;
             border-radius: 8px;
         }
+        #edad_grafica {
+            width: 28vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+        }
+        #genero_grafica {
+            width: 28vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+        }
+        #discapacidad_grafica {
+            width: 28vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+        }
+
+         /* Segunda pestaña */
     </style>
 </head>
 
@@ -231,10 +247,10 @@
                     <canvas id="edad_grafica"></canvas>
                 </div>
                 <div class="grafica_abajo_centro">
-                    <!-- <canvas id="edad_grafica_chart"></canvas> -->
+                    <canvas id="genero_grafica"></canvas>
                 </div>
                 <div class="grafica_abajo_derecha">
-                    <!-- <canvas id="edad_grafica_chart"></canvas> -->
+                    <canvas id="discapacidad_grafica"></canvas>
                 </div>
             </div>
         </section>
@@ -246,12 +262,18 @@
      crossorigin=""></script>  
     <script src="Js/selector.js"></script>
     <script src="Js/mapa.js"></script>
+    <script src="Js/datos.js"></script>
     <!-- Vamos importar graficas -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@3.1.0/dist/chartjs-chart-treemap.min.js"></script> <!-- Treemap -->
 
+    <!-- Primera pestaña -->
     <script src="Js/edad_grafica.js"></script>
     <script src="Js/dependencia_grafica.js"></script>
+    <script src="Js/genero_grafica.js"></script>
+    <script src="Js/discapacidad_grafica.js"></script>
+
+    <!-- Segunda pestaña -->
 
 </body>
 </html>
