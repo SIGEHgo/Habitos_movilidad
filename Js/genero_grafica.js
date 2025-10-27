@@ -18,7 +18,7 @@ new Chart(ctx3, {
         label: 'Frecuencia',
         data: datos_genero_grafica.map(d => d.v),
         backgroundColor: ['rgba(179, 142, 93, 1)', 'rgba(98, 17, 50, 1)', 'rgba(232, 216, 195, 1)', 'rgba(100, 149, 237, 1)'],
-        borderColor: ['rgba(179, 142, 93, 1)'],
+        // borderColor: ['rgba(179, 142, 93, 1)'],
         borderWidth: 1,
       }
     ]

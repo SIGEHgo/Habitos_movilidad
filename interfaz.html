@@ -204,6 +204,44 @@
             border-radius: 8px;
             display: none;
         }
+        #frecuencia_viajes_grafica {
+            width: 28vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+            display: none;
+        }
+        #viajes_intermedios_grafica {
+            width: 28vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+            display: none;
+        }
+        #gasto_mensual_grafica {
+            width: 28vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+            display: none;
+        }
+
+        /* Tercera pestaña */
+        #transporte_elegir_hogarT_grafica {
+            width: 43vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+            display: none;
+        }
+        #tiempo_hogarT_grafica {
+            width: 28vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+            display: none;
+        }
+        #accesibilidad_hogarT_grafica {
+            width: 28vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+            display: none;
+        }
     </style>
 </head>
 
@@ -247,17 +285,23 @@
                 <div class="grafica_arriba_derecha">
                     <canvas id="dependencia_grafica"></canvas>
                     <canvas id="medios_transporte_grafica"></canvas>
+                    <canvas id="transporte_elegir_hogarT_grafica"></canvas>
                 </div>
             </div>
             <div class="abajo">
                 <div class="grafica_abajo_izquierda">
                     <canvas id="edad_grafica"></canvas>
+                    <canvas id="frecuencia_viajes_grafica"></canvas>
+                    <canvas id="tiempo_hogarT_grafica"></canvas>
                 </div>
                 <div class="grafica_abajo_centro">
                     <canvas id="genero_grafica"></canvas>
+                    <canvas id="viajes_intermedios_grafica"></canvas>
+                    <canvas id="accesibilidad_hogarT_grafica"></canvas>
                 </div>
                 <div class="grafica_abajo_derecha">
                     <canvas id="discapacidad_grafica"></canvas>
+                    <canvas id="gasto_mensual_grafica"></canvas>
                 </div>
             </div>
         </section>
@@ -282,6 +326,16 @@
 
     <!-- Segunda pestaña -->
     <script src="Js/medios_transporte.js"></script>
+    <script src="Js/frecuencia_viajes_grafica.js"></script>
+    <script src="Js/viajes_intermedios_graficas.js"></script>
+    <script src="Js/gasto_mensual_grafica.js"></script>
+
+    <!-- Tercera pestaña -->
+    <script src="Js/transporte_elegir_hogarT_grafica.js"></script>
+    <script src="Js/tiempo_hogarT_grafica.js"></script>
+    <script src="Js/accesibilidad_hogarT_grafica.js"></script>
+
+
 
 </body>
 </html>

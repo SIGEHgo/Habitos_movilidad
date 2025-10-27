@@ -6,17 +6,31 @@ contenedor_discapacidad_grafica = document.getElementById('discapacidad_grafica'
 
 // Segunda pestaña
 contenedor_medios_transporte_grafica = document.getElementById('medios_transporte_grafica');
+contenedor_frecuencia_viajes_grafica = document.getElementById('frecuencia_viajes_grafica');
+contenedor_viajes_intermedios_grafica = document.getElementById('viajes_intermedios_grafica');
+contenedor_gasto_mensual_grafica = document.getElementById('gasto_mensual_grafica');
+
+// Tercera pestaña
+contenedor_transporte_elegir_hogarT_grafica = document.getElementById('transporte_elegir_hogarT_grafica');
+contenedor_tiempo_hogarT_grafica = document.getElementById('tiempo_hogarT_grafica');
+contenedor_accesibilidad_hogarT_grafica = document.getElementById('accesibilidad_hogarT_grafica');
 
 
 
+////////////////////////////
+// Ocultamos inicialmente // 
+////////////////////////////
 
-
-
-
-
-// Ocultamos inicialmente 
 // Segunda pestaña
 contenedor_medios_transporte_grafica.style.display = 'none';
+contenedor_frecuencia_viajes_grafica.style.display = 'none';
+contenedor_viajes_intermedios_grafica.style.display = 'none';
+contenedor_gasto_mensual_grafica.style.display = 'none';
+
+// Tercera pestaña
+contenedor_transporte_elegir_hogarT_grafica.style.display = 'none';
+contenedor_tiempo_hogarT_grafica.style.display = 'none';
+contenedor_accesibilidad_hogarT_grafica.style.display = 'none';
 
 document.querySelectorAll('.pill input[type="radio"]').forEach(r => {
     r.addEventListener('change', () => {
@@ -30,7 +44,18 @@ document.querySelectorAll('.pill input[type="radio"]').forEach(r => {
                 contenedor_genero_grafica.style.display = 'block';
                 contenedor_discapacidad_grafica.style.display = 'block';
 
+
+                // Ocultar las gráficas de la segunda pestaña
                 contenedor_medios_transporte_grafica.style.display = 'none';
+                contenedor_frecuencia_viajes_grafica.style.display = 'none';
+                contenedor_viajes_intermedios_grafica.style.display = 'none';
+                contenedor_gasto_mensual_grafica.style.display = 'none';
+
+                // Ocultar la gráfica de la tercera pestaña
+                contenedor_transporte_elegir_hogarT_grafica.style.display = 'none';
+                contenedor_tiempo_hogarT_grafica.style.display = 'none';
+                contenedor_accesibilidad_hogarT_grafica.style.display = 'none';
+
                 
                 
                 break;
@@ -45,6 +70,15 @@ document.querySelectorAll('.pill input[type="radio"]').forEach(r => {
 
                 // Mostrar la gráfica de la segunda pestaña
                 contenedor_medios_transporte_grafica.style.display = 'block';
+                contenedor_frecuencia_viajes_grafica.style.display = 'block';
+                contenedor_viajes_intermedios_grafica.style.display = 'block';
+                contenedor_gasto_mensual_grafica.style.display = 'block';
+
+                // Ocultar la gráfica de la tercera pestaña
+                contenedor_transporte_elegir_hogarT_grafica.style.display = 'none';
+                contenedor_tiempo_hogarT_grafica.style.display = 'none';
+                contenedor_accesibilidad_hogarT_grafica.style.display = 'none';
+
                 break;
             case "3":
                 //console.log('Seleccionado:', r.value);
@@ -55,8 +89,19 @@ document.querySelectorAll('.pill input[type="radio"]').forEach(r => {
                 contenedor_genero_grafica.style.display = 'none';
                 contenedor_discapacidad_grafica.style.display = 'none';
 
-                // Ocualtar la gráfica de la segunda pestaña
+                // Ocultar la gráfica de la segunda pestaña
                 contenedor_medios_transporte_grafica.style.display = 'none';
+                contenedor_frecuencia_viajes_grafica.style.display = 'none';
+                contenedor_viajes_intermedios_grafica.style.display = 'none';
+                contenedor_gasto_mensual_grafica.style.display = 'none';
+
+                // Mostrar la gráfica de la tercera pestaña
+                contenedor_transporte_elegir_hogarT_grafica.style.display = 'block';
+                contenedor_tiempo_hogarT_grafica.style.display = 'block';
+                contenedor_accesibilidad_hogarT_grafica.style.display = 'block';
+
+
+
                 break;
             case "4":
                 //console.log('Seleccionado:', r.value);
@@ -69,6 +114,17 @@ document.querySelectorAll('.pill input[type="radio"]').forEach(r => {
 
                 // Ocualtar la gráfica de la segunda pestaña
                 contenedor_medios_transporte_grafica.style.display = 'none';
+                contenedor_frecuencia_viajes_grafica.style.display = 'none';
+                contenedor_viajes_intermedios_grafica.style.display = 'none';
+                contenedor_gasto_mensual_grafica.style.display = 'none';
+
+                // Ocultar la gráfica de la tercera pestaña
+                contenedor_transporte_elegir_hogarT_grafica.style.display = 'none';
+                contenedor_tiempo_hogarT_grafica.style.display = 'none';
+                contenedor_accesibilidad_hogarT_grafica.style.display = 'none';
+
+
+
                 break;
             default:
                 console.log('Valor no reconocido:', r.value);

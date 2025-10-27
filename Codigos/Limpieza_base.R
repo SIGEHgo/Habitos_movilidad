@@ -42,7 +42,7 @@ datos = datos |>
                 `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Tuzobús]_Trabajo_Hogar`,
                 `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Taxi]_Trabajo_Hogar`,
                 `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Bicicleta]_Trabajo_Hogar`,
-                `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Taxi]_Trabajo_Hogar`,
+                `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [A pie]_Trabajo_Hogar`,
                 `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Auto compartido]_Trabajo_Hogar`,
                 `¿Utiliza diferentes medios de transporte para llegar a su domicilio particular?_Trabajo_Hogar...79`,
                 `¿ Qué otro medio de transporte utiliza para llegar a su domicilio particular?_Trabajo_Hogar`,
@@ -311,6 +311,7 @@ orden = datos |>
     `¿Cuál es el horario típico de su primer viaje?_Homologado`, 
     `¿Con qué frecuencia realiza este viaje?_Hogar_Trabajo`,
     `¿Cuál es el tiempo de traslado que realiza a su lugar de trabajo?_Hogar_Trabajo`,
+    `¿Cómo calificaría la accesibilidad al transporte público desde su domicilio particular?_Hogar_Trabajo`,
     
     `¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio`,
     `¿ Qué medios de transporte utiliza para llegar a su domicilio particular?`,
@@ -322,6 +323,22 @@ orden = datos |>
     `¿ Qué otro medio de transporte utiliza para llegar a su domicilio particular?_Trabajo_Hogar`,
     `Normalmente, ¿Cuánto gasta mensualmente en transporte?`,
     `¿Cuántos viajes intermedios realiza antes de llegar a su destino final?_Hogar_Trabajo`,
+    
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Vehículo particular]_Hogar_Trabajo`,
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Transporte público colectivo (micro, urvan, combi)]_Hogar_Trabajo`,
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Tuzobús]_Hogar_Trabajo`,
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Taxi]_Hogar_Trabajo`,
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Bicicleta]_Hogar_Trabajo`,
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [A pie]_Hogar_Trabajo`,
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Auto compartido]_Hogar_Trabajo`,
+    
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Vehículo particular]_Trabajo_Hogar`,
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Transporte público colectivo (micro, Urvan, combi)]_Trabajo_Hogar`,
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Tuzobús]_Trabajo_Hogar`,
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Taxi]_Trabajo_Hogar`,
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Bicicleta]_Trabajo_Hogar`,
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [A pie]_Trabajo_Hogar`,
+    `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Auto compartido]_Trabajo_Hogar`,
   )
 
 
@@ -339,3 +356,12 @@ codigos = codigos |>  dplyr::arrange(dplyr::desc(conteo))
 
 
 writexl::write_xlsx(orden, "Output/datos_filtrados.xlsx")
+
+
+
+
+
+
+
+
+

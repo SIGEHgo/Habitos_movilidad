@@ -21,6 +21,10 @@ discapacidad = datos |>
   dplyr::count(`¿Usted presenta alguna discapacidad?`, sort = T)
 
 
+
+prueba = datos |> 
+  dplyr::count(`De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Vehículo particular]_Hogar_Trabajo`)
+
 jsonlite::write_json(datos, "Output/base_filtrada.json", pretty = TRUE)
 
 
