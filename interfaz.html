@@ -242,6 +242,12 @@
             border-radius: 8px;
             display: none;
         }
+        #horarios_hogarT_grafica {
+            width: 28vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+            display: none;
+        }
     </style>
 </head>
 
@@ -302,6 +308,7 @@
                 <div class="grafica_abajo_derecha">
                     <canvas id="discapacidad_grafica"></canvas>
                     <canvas id="gasto_mensual_grafica"></canvas>
+                    <canvas id="horarios_hogarT_grafica"></canvas>
                 </div>
             </div>
         </section>
@@ -311,9 +318,12 @@
      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>  
+
+     <!-- Datos nesarios -->
     <script src="Js/selector.js"></script>
-    <script src="Js/mapa.js"></script>
     <script src="Js/datos.js"></script>
+    <script src="Js/mapa.js"></script>
+
     <!-- Vamos importar graficas -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@3.1.0/dist/chartjs-chart-treemap.min.js"></script> <!-- Treemap -->
@@ -334,6 +344,7 @@
     <script src="Js/transporte_elegir_hogarT_grafica.js"></script>
     <script src="Js/tiempo_hogarT_grafica.js"></script>
     <script src="Js/accesibilidad_hogarT_grafica.js"></script>
+    <script src="Js/horarios_hogarT_grafica.js"></script>
 
 
 

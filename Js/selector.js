@@ -14,6 +14,7 @@ contenedor_gasto_mensual_grafica = document.getElementById('gasto_mensual_grafic
 contenedor_transporte_elegir_hogarT_grafica = document.getElementById('transporte_elegir_hogarT_grafica');
 contenedor_tiempo_hogarT_grafica = document.getElementById('tiempo_hogarT_grafica');
 contenedor_accesibilidad_hogarT_grafica = document.getElementById('accesibilidad_hogarT_grafica');
+contenedor_horarios_hogarT_grafica = document.getElementById('horarios_hogarT_grafica');
 
 
 
@@ -31,6 +32,7 @@ contenedor_gasto_mensual_grafica.style.display = 'none';
 contenedor_transporte_elegir_hogarT_grafica.style.display = 'none';
 contenedor_tiempo_hogarT_grafica.style.display = 'none';
 contenedor_accesibilidad_hogarT_grafica.style.display = 'none';
+contenedor_horarios_hogarT_grafica.style.display = 'none';
 
 document.querySelectorAll('.pill input[type="radio"]').forEach(r => {
     r.addEventListener('change', () => {
@@ -55,6 +57,8 @@ document.querySelectorAll('.pill input[type="radio"]').forEach(r => {
                 contenedor_transporte_elegir_hogarT_grafica.style.display = 'none';
                 contenedor_tiempo_hogarT_grafica.style.display = 'none';
                 contenedor_accesibilidad_hogarT_grafica.style.display = 'none';
+                contenedor_horarios_hogarT_grafica.style.display = 'none';
+
 
                 
                 
@@ -78,6 +82,8 @@ document.querySelectorAll('.pill input[type="radio"]').forEach(r => {
                 contenedor_transporte_elegir_hogarT_grafica.style.display = 'none';
                 contenedor_tiempo_hogarT_grafica.style.display = 'none';
                 contenedor_accesibilidad_hogarT_grafica.style.display = 'none';
+                contenedor_horarios_hogarT_grafica.style.display = 'none';
+
 
                 break;
             case "3":
@@ -99,6 +105,7 @@ document.querySelectorAll('.pill input[type="radio"]').forEach(r => {
                 contenedor_transporte_elegir_hogarT_grafica.style.display = 'block';
                 contenedor_tiempo_hogarT_grafica.style.display = 'block';
                 contenedor_accesibilidad_hogarT_grafica.style.display = 'block';
+                contenedor_horarios_hogarT_grafica.style.display = 'block';
 
 
 
@@ -122,6 +129,8 @@ document.querySelectorAll('.pill input[type="radio"]').forEach(r => {
                 contenedor_transporte_elegir_hogarT_grafica.style.display = 'none';
                 contenedor_tiempo_hogarT_grafica.style.display = 'none';
                 contenedor_accesibilidad_hogarT_grafica.style.display = 'none';
+                contenedor_horarios_hogarT_grafica.style.display = 'none';
+
 
 
 
