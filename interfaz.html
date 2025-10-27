@@ -56,6 +56,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 0;
+            margin: 0;
         }
     
         .pill {
@@ -138,6 +140,7 @@
             width: 43vw;
             height: 43vh;
             padding: 0;
+            margin: 0;
             border-radius: 8px;
         }
     
@@ -173,6 +176,7 @@
             border-radius: 8px;
             display: flex;
             flex-direction: column; /* importante */
+            padding: 0;
         }
 
         /* Primera pestaña */
@@ -180,21 +184,29 @@
             width: 43vw !important;
             height: 43vh !important;
             border-radius: 8px;
+            padding: 0;
+            margin: 0;
         }
         #edad_grafica {
             width: 28vw !important;
             height: 43vh !important;
             border-radius: 8px;
+            padding: 0;
+            margin: 0;
         }
         #genero_grafica {
             width: 28vw !important;
             height: 43vh !important;
             border-radius: 8px;
+            padding: 0;
+            margin: 0;
         }
         #discapacidad_grafica {
             width: 28vw !important;
             height: 43vh !important;
             border-radius: 8px;
+            padding: 0;
+            margin: 0;
         }
 
          /* Segunda pestaña */
@@ -203,24 +215,32 @@
             height: 43vh !important;
             border-radius: 8px;
             display: none;
+            padding: 0;
+            margin: 0;
         }
         #frecuencia_viajes_grafica {
             width: 28vw !important;
             height: 43vh !important;
             border-radius: 8px;
             display: none;
+            padding: 0;
+            margin: 0;
         }
         #viajes_intermedios_grafica {
             width: 28vw !important;
             height: 43vh !important;
             border-radius: 8px;
             display: none;
+            padding: 0;
+            margin: 0;
         }
         #gasto_mensual_grafica {
             width: 28vw !important;
             height: 43vh !important;
             border-radius: 8px;
             display: none;
+            padding: 0;
+            margin: 0;
         }
 
         /* Tercera pestaña */
@@ -229,24 +249,58 @@
             height: 43vh !important;
             border-radius: 8px;
             display: none;
+            padding: 0;
+            margin: 0;
         }
         #tiempo_hogarT_grafica {
             width: 28vw !important;
             height: 43vh !important;
             border-radius: 8px;
             display: none;
+            padding: 0;
+            margin: 0;
         }
         #accesibilidad_hogarT_grafica {
             width: 28vw !important;
             height: 43vh !important;
             border-radius: 8px;
             display: none;
+            padding: 0;
+            margin: 0;
         }
         #horarios_hogarT_grafica {
             width: 28vw !important;
             height: 43vh !important;
             border-radius: 8px;
             display: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Cuarta pestaña */
+        #tiempo_trabajoH_grafica {
+            width: 28vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+            display: none;
+            padding: 0;
+            margin: 0;
+        }
+        #accesibilidad_trabajoH_grafica {
+            width: 28vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+            display: none;
+            padding: 0;
+            margin: 0;
+        }
+        #horarios_trabajoH_grafica {
+            width: 28vw !important;
+            height: 43vh !important;
+            border-radius: 8px;
+            display: none;
+            padding: 0;
+            margin: 0;
         }
     </style>
 </head>
@@ -299,16 +353,19 @@
                     <canvas id="edad_grafica"></canvas>
                     <canvas id="frecuencia_viajes_grafica"></canvas>
                     <canvas id="tiempo_hogarT_grafica"></canvas>
+                    <canvas id="tiempo_trabajoH_grafica"></canvas>
                 </div>
                 <div class="grafica_abajo_centro">
                     <canvas id="genero_grafica"></canvas>
                     <canvas id="viajes_intermedios_grafica"></canvas>
                     <canvas id="accesibilidad_hogarT_grafica"></canvas>
+                    <canvas id="accesibilidad_trabajoH_grafica"></canvas>
                 </div>
                 <div class="grafica_abajo_derecha">
                     <canvas id="discapacidad_grafica"></canvas>
                     <canvas id="gasto_mensual_grafica"></canvas>
                     <canvas id="horarios_hogarT_grafica"></canvas>
+                    <canvas id="horarios_trabajoH_grafica"></canvas>
                 </div>
             </div>
         </section>
@@ -345,6 +402,12 @@
     <script src="Js/tiempo_hogarT_grafica.js"></script>
     <script src="Js/accesibilidad_hogarT_grafica.js"></script>
     <script src="Js/horarios_hogarT_grafica.js"></script>
+
+    <!-- Cuarta pestaña -->
+     <script src="Js/tiempo_trabajoH_grafica.js"></script>
+     <script src="Js/accesibilidad_trabajoH_grafica.js"></script>
+     <script src="Js/horarios_trabajoH_grafica.js"></script>
+
 
 
 
