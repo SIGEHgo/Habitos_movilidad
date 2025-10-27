@@ -4,13 +4,13 @@ let datos_discapacidad_grafica =  Object.entries(
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
-).map(([g, v]) => ({ g, v}));
+).map(([g, v]) => ({g, v}));
 
 
 const ctx4 = document.getElementById('discapacidad_grafica').getContext('2d');
 
 new Chart(ctx4, {
-  type: 'pie',
+  type: 'doughnut',
   data: {
     labels: datos_discapacidad_grafica.map(d => d.g),
     datasets: [

@@ -312,7 +312,7 @@ orden = datos |>
     `¿Con qué frecuencia realiza este viaje?_Hogar_Trabajo`,
     `¿Cuál es el tiempo de traslado que realiza a su lugar de trabajo?_Hogar_Trabajo`,
     
-    `¿Cómo calificaría la accesibilidad al transporte público desde su domicilio particular?_Hogar_Trabajo`,
+    `¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio`,
     `¿ Qué medios de transporte utiliza para llegar a su domicilio particular?`,
     `Comúnmente, ¿En qué horario realiza el viaje de regreso a su domicilio particular?_Trabajo_Hogar`,
     `¿Cuál es el tiempo de traslado que realiza a su domicilio particular?_Trabajo_Hogar`,
@@ -321,7 +321,7 @@ orden = datos |>
     `¿Cómo calificaría la calidad del transporte público que utiliza?`,
     `¿ Qué otro medio de transporte utiliza para llegar a su domicilio particular?_Trabajo_Hogar`,
     `Normalmente, ¿Cuánto gasta mensualmente en transporte?`,
-    `¿Cuántos viajes intermedios realiza antes de llegar a su destino final?_Hogar_Trabajo`
+    `¿Cuántos viajes intermedios realiza antes de llegar a su destino final?_Hogar_Trabajo`,
   )
 
 
