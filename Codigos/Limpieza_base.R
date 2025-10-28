@@ -338,6 +338,23 @@ jsonlite::write_json(orden, "Output/base_filtrada.json", pretty = TRUE)
 
 
 
+codigos = sf::read_sf("Datos/CP_Hgo.shp")
+
+
+orden = orden |>
+  dplyr::left_join(codigos, by = c("Código postal_Hogar_Trabajo" = "d_cp"))
+
+orden = orden |> 
+  sf::st_as_sf(crs = sf::st_crs(codigos)) |> 
+  sf::st_transform(crs = 4326) 
+
+
+
+which(orden$geometry |>  sf::st_is_empty()) ### Checar las incorrectas pendiente
+orden = orden[-which(orden$geometry |>  sf::st_is_empty()),]
+orden = orden |>  sf::st_make_valid() |> sf::st_centroid()
+
+sf::st_write(orden, "Output/Base_geometria/datos_filtrados.geojson", driver = "GeoJSON")
 
 
 
