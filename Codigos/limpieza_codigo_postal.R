@@ -1,49 +1,55 @@
-datos = readxl::read_excel("Datos/Encuesta sobre hábitos de movilidad de personas servidoras públicas del Gobierno del estado de Hidalgo (respuestas).xlsx")
-codigos = sf::read_sf("Datos/CP_Hgo.shp")
+df = readxl::read_excel("Datos/Encuesta sobre hábitos de movilidad de personas servidoras públicas del Gobierno del estado de Hidalgo (respuestas).xlsx")
 
-names(datos) = names(datos) |>  gsub(pattern = "_Trabajo", replacement = "_Trabajo_Hogar")
-names(datos) = names(datos) |>  gsub(pattern = " _Trabajo", replacement = "_Trabajo_Hogar")
+datos = readxl::read_excel("Output/datos_filtrados.xlsx")
+mun = sf::read_sf("../../Importantes_documentos_usar/Municipios/municipiosjair.shp")
 
-names(datos) = names(datos) |>  gsub(pattern = "_Origen", replacement = "_Hogar_Trabajo")
-names(datos) = names(datos) |>  gsub(pattern = " _Origen", replacement = "_Hogar_Trabajo")
+codigo_geometrias = sf::read_sf("Datos/CP_Hgo.shp")
+codigo_geometrias = codigo_geometrias |> sf::st_transform(crs = 4326)
 
-names(datos) = names(datos) |>  stringr::str_squish()
+hogar = datos |>  dplyr::select(Dependencia, `Código postal_Hogar_Trabajo`) |>  unique()
+hogar = hogar |> 
+  dplyr::group_by(`Código postal_Hogar_Trabajo`) |> 
+  dplyr::summarise(depencia = paste0(Dependencia, collapse = ","))
+
+hogar_conteo = datos |> 
+  dplyr::count(`Código postal_Hogar_Trabajo`)
+
+hogar = hogar |> dplyr::left_join(y = hogar_conteo, by = c("Código postal_Hogar_Trabajo" = "Código postal_Hogar_Trabajo"))
+hogar = hogar |> 
+  dplyr::mutate(depencia = depencia |>  gsub(pattern = ",", replacement = ", ")) |> 
+  dplyr::arrange(dplyr::desc(n))
+
+hogar = hogar |>  dplyr::left_join(y = codigo_geometrias, by = c("Código postal_Hogar_Trabajo" = "d_cp")) |> 
+  sf::st_sf(crs = 4326) |>  sf::st_make_valid()
 
 
-datos = datos[-c(1:11),]
+p = sf::st_join(x = hogar, y = mun, join = sf::st_intersects)
 
-
-
-codigo_hogar = datos |> 
-  dplyr::select(Dependencia,`Código postal_Hogar_Trabajo`)
-
-codigo_hogar = unique(codigo_hogar)
-codigo_hogar = codigo_hogar |> 
-  dplyr::mutate(
-      `Código postal_Hogar_Trabajo` = dplyr::case_when(
-        `Código postal_Hogar_Trabajo` == "82161" ~ "42186",
-        `Código postal_Hogar_Trabajo` == "42111186" ~ "42186",
-        `Código postal_Hogar_Trabajo` == "4115" ~ "42115",  # Error de dedo
-        `Código postal_Hogar_Trabajo` == "420000" ~ "42000",
-        
-        `Código postal_Hogar_Trabajo` == "54680" ~ "42853",  # Tepeji del Rio
-        `Código postal_Hogar_Trabajo` == "55660" ~ "42986",  # Fuera de tula de allende
-        `Código postal_Hogar_Trabajo` == "54660" ~ "42995",  # Fuera de tula de allende
-        `Código postal_Hogar_Trabajo` == "45185" ~ "42000",  # En mineral de la reforma pero el codigo no aparece 42186
-        `Código postal_Hogar_Trabajo` == "54763" ~ "42855",  # Segun google
-        `Código postal_Hogar_Trabajo` == "46160" ~ "42160",  # Seguramente error de dedo
-        `Código postal_Hogar_Trabajo` == "55755" ~ "43802",  # Duda de tizayuca, pero eso salio en una pagina
-        TRUE ~ `Código postal_Hogar_Trabajo`
-     )
-   )
+leaflet() |> 
+  addTiles() |> 
+  addPolygons(data = hogar, popup = hogar$`Código postal_Hogar_Trabajo`)
 
 
 library(leaflet)
 leaflet() |> 
   addTiles() |> 
-  addPolygons(data = codigos |>  sf::st_transform(crs = 4326), popup = codigos$d_cp)
+  addPolygons(data = codigo_geometrias |>  sf::st_transform(crs = 4326), popup = codigo_geometrias$d_cp)
 
-a = codigo_hogar$`Código postal_Hogar_Trabajo` |>  unique() |>  data.frame()
-names(a) = "codigo"
-a = a |> 
-  dplyr::filter(as.numeric(codigo)>43998)
+
+
+
+
+### Trabajo
+trabajo = datos |>  dplyr::select(Dependencia, `Código Postal_Trabajo_Hogar`) |>  unique()
+trabajo = trabajo |> 
+  dplyr::group_by(`Código Postal_Trabajo_Hogar`) |> 
+  dplyr::summarise(depencia = paste0(Dependencia, collapse = ",")) |> 
+  dplyr::ungroup() |> 
+  dplyr::mutate(depencia = depencia |> gsub(pattern = ",", replacement = ", "))
+
+
+trabajo = trabajo |>  dplyr::left_join(y = codigo_geometrias, by = c("Código Postal_Trabajo_Hogar" = "d_cp")) |>  sf::st_as_sf(crs = 4326)
+
+
+trabajo = trabajo |> 
+  dplyr::filter(geometry |>  sf::st_is_empty())

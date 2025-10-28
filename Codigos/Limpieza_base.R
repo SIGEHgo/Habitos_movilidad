@@ -306,7 +306,53 @@ datos = datos |>
     ),
   )
 
+datos = datos |> 
+  dplyr::mutate(
+    `Código Postal_Trabajo_Hogar` = dplyr::case_when(
+      `Código Postal_Trabajo_Hogar` == "200" ~ "42000",    # Oficialia Mayor
+      `Código Postal_Trabajo_Hogar` == "2122" ~ "42000",   # Oficialia Mayor
+      `Código Postal_Trabajo_Hogar` == "22858" ~ "42855",  # Tepeji del rio
+      `Código Postal_Trabajo_Hogar` == "4200" ~ "42000", 
+      `Código Postal_Trabajo_Hogar` == "801" ~ "42000", 
+      `Código Postal_Trabajo_Hogar` == "82084" ~ "42084", 
+      `Código Postal_Trabajo_Hogar` == "82183" ~ "42083",
+      `Código Postal_Trabajo_Hogar` == "40032" ~ "42080", 
+      `Código Postal_Trabajo_Hogar` == "40070" ~ "42082", 
+      `Código Postal_Trabajo_Hogar` == "4082" ~ "42080", 
+      `Código Postal_Trabajo_Hogar` == "40880" ~ "42080", 
+      `Código Postal_Trabajo_Hogar` == "41080" ~ "42080",
+      `Código Postal_Trabajo_Hogar` == "4296" ~ "43763",
+      `Código Postal_Trabajo_Hogar` == "4384" ~ "43840",
+      `Código Postal_Trabajo_Hogar` == "45186" ~ "42186",
+      `Código Postal_Trabajo_Hogar` == "45855" ~ "42855",
+      `Código Postal_Trabajo_Hogar` == "46000" ~ "42000",
+      `Código Postal_Trabajo_Hogar` == "54650" ~ "42080", # Otra duda
+      `Código Postal_Trabajo_Hogar` == "72080" ~ "42080",
+      
+      
+      # Los que se quedan sin geometria de trabajo_hogar
+      `Código Postal_Trabajo_Hogar` == "42009" ~ "42060",
+      `Código Postal_Trabajo_Hogar` == "42016" ~ "42162",
+      `Código Postal_Trabajo_Hogar` == "42038" ~ "42083",
+      
+      `Código Postal_Trabajo_Hogar` == "42063" ~ "42064",
+      `Código Postal_Trabajo_Hogar` == "42085" ~ "42084",
+      `Código Postal_Trabajo_Hogar` == "42087" ~ "42162",
+      `Código Postal_Trabajo_Hogar` == "42089" ~ "42094",
+      `Código Postal_Trabajo_Hogar` == "42091" ~ "42090",
+      `Código Postal_Trabajo_Hogar` == "42093" ~ "42094",
+      `Código Postal_Trabajo_Hogar` == "42183" ~ "42083",
+      `Código Postal_Trabajo_Hogar` == "42809" ~ "42808",
+      `Código Postal_Trabajo_Hogar` == "42850" ~ "42854",
+      TRUE ~ `Código Postal_Trabajo_Hogar`
+    )
+  )
 
+
+
+datos = datos |>  dplyr::mutate(
+  `Código Postal_Trabajo_Hogar` = dplyr::if_else(condition = is.na(`Código Postal_Trabajo_Hogar`), true = "42000", false = `Código Postal_Trabajo_Hogar` )
+)
 write.csv(datos, "Output/base_filtrada_completa.csv", row.names = F)
 writexl::write_xlsx(datos, "Output/base_filtrada_completa_excel.xlsx")
 
@@ -377,6 +423,10 @@ orden = orden |>
   sf::st_centroid()
 
 sf::st_write(orden, "Output/Base_geometria/datos_filtrados.geojson", driver = "GeoJSON", delete_dsn = TRUE)
+
+
+
+
 library(leaflet)
 leaflet() |> 
   addTiles() |> 
@@ -386,8 +436,8 @@ leaflet() |>
 # orden = orden[which(orden$geometry |>  sf::st_is_empty()),]
 # orden = orden |>  sf::st_make_valid() |> sf::st_centroid()
 
-
-
+leaflet() |> 
+  addTiles() |>  addCircleMarkers(data = orden)
 
 
 
