@@ -282,6 +282,30 @@ datos = datos |> dplyr::mutate(
   `Código Postal_Trabajo_Hogar` = as.character(`Código Postal_Trabajo_Hogar`)
 )
 
+# Correcion de aquellos que no encontro geometria
+datos = datos |> 
+  dplyr::mutate(
+    `Código postal_Hogar_Trabajo` = dplyr::case_when(
+      `Código postal_Hogar_Trabajo` == "42998" ~ "43998",
+      `Código postal_Hogar_Trabajo` == "42074" ~ "42084",
+      `Código postal_Hogar_Trabajo` == "42183" ~ "42184",
+      `Código postal_Hogar_Trabajo` == "42072" ~ "42082",
+      `Código postal_Hogar_Trabajo` == "40230" ~ "42030",
+      `Código postal_Hogar_Trabajo` == "42049" ~ "42040",
+      `Código postal_Hogar_Trabajo` == "43182" ~ "42184",
+      `Código postal_Hogar_Trabajo` == "43903" ~ "43900",
+      `Código postal_Hogar_Trabajo` == "4310" ~ "43810",
+      `Código postal_Hogar_Trabajo` == "41094" ~ "42094",
+      `Código postal_Hogar_Trabajo` == "42089" ~ "42184",
+      `Código postal_Hogar_Trabajo` == "43765" ~ "43767",
+      `Código postal_Hogar_Trabajo` == "42909" ~ "42090",
+      `Código postal_Hogar_Trabajo` == "42085" ~ "42185",
+      `Código postal_Hogar_Trabajo` == "42161" ~ "42186",
+      `Código postal_Hogar_Trabajo` == "42053" ~ "42083",
+      TRUE ~ `Código postal_Hogar_Trabajo`
+    ),
+  )
+
 
 write.csv(datos, "Output/base_filtrada_completa.csv", row.names = F)
 writexl::write_xlsx(datos, "Output/base_filtrada_completa_excel.xlsx")
@@ -332,6 +356,8 @@ orden = datos |>
 
 
 
+
+
 writexl::write_xlsx(orden, "Output/datos_filtrados.xlsx")
 jsonlite::write_json(orden, "Output/base_filtrada.json", pretty = TRUE)
 
@@ -346,15 +372,21 @@ orden = orden |>
 
 orden = orden |> 
   sf::st_as_sf(crs = sf::st_crs(codigos)) |> 
-  sf::st_transform(crs = 4326) 
+  sf::st_transform(crs = 4326) |>  
+  sf::st_make_valid() |> 
+  sf::st_centroid()
+
+sf::st_write(orden, "Output/Base_geometria/datos_filtrados.geojson", driver = "GeoJSON", delete_dsn = TRUE)
+library(leaflet)
+leaflet() |> 
+  addTiles() |> 
+  addPolygons(data = codigos |>  sf::st_transform(crs = 4326))
+
+# which(orden$geometry |>  sf::st_is_empty()) ### Checar las incorrectas pendiente
+# orden = orden[which(orden$geometry |>  sf::st_is_empty()),]
+# orden = orden |>  sf::st_make_valid() |> sf::st_centroid()
 
 
-
-which(orden$geometry |>  sf::st_is_empty()) ### Checar las incorrectas pendiente
-orden = orden[-which(orden$geometry |>  sf::st_is_empty()),]
-orden = orden |>  sf::st_make_valid() |> sf::st_centroid()
-
-sf::st_write(orden, "Output/Base_geometria/datos_filtrados.geojson", driver = "GeoJSON")
 
 
 
