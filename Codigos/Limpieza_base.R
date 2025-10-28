@@ -46,7 +46,9 @@ datos = datos |>
                 `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Auto compartido]_Trabajo_Hogar`,
                 `¿Utiliza diferentes medios de transporte para llegar a su domicilio particular?_Trabajo_Hogar...79`,
                 `¿ Qué otro medio de transporte utiliza para llegar a su domicilio particular?_Trabajo_Hogar`,
-                `Normalmente, ¿Cuánto gasta mensualmente en transporte?`
+                `Normalmente, ¿Cuánto gasta mensualmente en transporte?`,
+                `Código postal_Hogar_Trabajo`,
+                `Código Postal_Trabajo_Hogar`
   )
 
 
@@ -261,47 +263,28 @@ datos = datos |>
   )
 
 
+datos = datos |> dplyr::mutate(
+  `Código postal_Hogar_Trabajo` = dplyr::case_when(
+    `Código postal_Hogar_Trabajo` == "82161" ~ "42186",
+    `Código postal_Hogar_Trabajo` == "42111186" ~ "42186",
+    `Código postal_Hogar_Trabajo` == "4115" ~ "42115",  # Error de dedo
+    `Código postal_Hogar_Trabajo` == "420000" ~ "42000",
+    
+    `Código postal_Hogar_Trabajo` == "54680" ~ "42853",  # Tepeji del Rio
+    `Código postal_Hogar_Trabajo` == "55660" ~ "42986",  # Fuera de tula de allende
+    `Código postal_Hogar_Trabajo` == "54660" ~ "42995",  # Fuera de tula de allende
+    `Código postal_Hogar_Trabajo` == "45185" ~ "42000",  # En mineral de la reforma pero el codigo no aparece 42186
+    `Código postal_Hogar_Trabajo` == "54763" ~ "42855",  # Segun google
+    `Código postal_Hogar_Trabajo` == "46160" ~ "42160",  # Seguramente error de dedo
+    `Código postal_Hogar_Trabajo` == "55755" ~ "43802",  # Duda de tizayuca, pero eso salio en una pagina
+    TRUE ~ `Código postal_Hogar_Trabajo`
+  ),
+  `Código Postal_Trabajo_Hogar` = as.character(`Código Postal_Trabajo_Hogar`)
+)
+
+
 write.csv(datos, "Output/base_filtrada_completa.csv", row.names = F)
 writexl::write_xlsx(datos, "Output/base_filtrada_completa_excel.xlsx")
-
-datos$Edad_Clasificacion |>  table()
-datos$Genero |>  table()
-datos$Dependencia |>  table()
-datos$`¿Usted presenta alguna discapacidad?` |>  table()
-datos$`¿Cuál es el horario típico de su primer viaje?_Homologado` |>  table()
-datos$`¿Con qué frecuencia realiza este viaje?_Hogar_Trabajo` |>  table()
-datos$`¿Cómo calificaría la accesibilidad al transporte público desde su domicilio particular?_Hogar_Trabajo` |>  unique()
-datos$`¿ Qué medios de transporte utiliza para llegar a su domicilio particular?` |>  unique()
-datos$`Comúnmente, ¿En qué horario realiza el viaje de regreso a su domicilio particular?_Trabajo_Hogar` |>  unique()
-datos$`¿Cuál es el tiempo de traslado que realiza a su domicilio particular?_Trabajo_Hogar` |>  unique()
-datos$`¿Cómo calificaría la accesibilidad al transporte público desde su lugar de trabajo?` |>  unique()
-datos$`¿Cómo calificaría la calidad del transporte público que utiliza?` |>  unique()
-datos$`¿ Qué otro medio de transporte utiliza para llegar a su domicilio particular?_Trabajo_Hogar` |>  unique()  # Pendiente
-datos$`Normalmente, ¿Cuánto gasta mensualmente en transporte?` |>  unique()
-datos$`¿Cuántos viajes intermedios realiza antes de llegar a su destino final?_Hogar_Trabajo` |>  unique()
-
-conteo = datos |> 
-  dplyr::group_by(`¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio`) |> 
-  dplyr::summarise(conteo = dplyr::n())
-names(conteo)[1] = "variable"
-conteo[grep(x = conteo$variable, pattern = "moto", ignore.case = T), ]$variable
-
-
-datos$`De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Vehículo particular]_Hogar_Trabajo` |>  unique()
-
-automovil = datos |>  
-  dplyr::select(`De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Vehículo particular]_Hogar_Trabajo`) |> 
-  dplyr::filter(`De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Vehículo particular]_Hogar_Trabajo` %in% c("1","2","3","4","5","6","7"))
-
-
-automovil$`De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Vehículo particular]_Hogar_Trabajo` |>  table()/(772+129+83+75+60+70+200 )
-  
-  
-sum(automovil$`De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Vehículo particular]_Hogar_Trabajo` |>  as.numeric())
-write.csv(datos, "Output/base_ver.csv", row.names = F, fileEncoding = "latin1")
-
-
-
 
 
 orden = datos |> 
@@ -339,24 +322,18 @@ orden = datos |>
     `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Bicicleta]_Trabajo_Hogar`,
     `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [A pie]_Trabajo_Hogar`,
     `De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Auto compartido]_Trabajo_Hogar`,
+    
+    `Código postal_Hogar_Trabajo`,
+    `Código Postal_Trabajo_Hogar`
   )
 
 
-orden$`¿Con qué frecuencia realiza este viaje?_Hogar_Trabajo` |>  table()
-
-
-
-codigos = datos |> 
-  dplyr::group_by(`Código postal_Hogar_Trabajo`) |> 
-  dplyr::summarise(conteo = dplyr::n())
-
-codigos = codigos |>  dplyr::arrange(dplyr::desc(conteo))
 
 
 
 
 writexl::write_xlsx(orden, "Output/datos_filtrados.xlsx")
-
+jsonlite::write_json(orden, "Output/base_filtrada.json", pretty = TRUE)
 
 
 
