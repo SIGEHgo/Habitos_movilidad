@@ -1,6 +1,6 @@
 let datos_dependencia_grafica =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d.Dependencia;
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties.Dependencia;
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})

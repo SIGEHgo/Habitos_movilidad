@@ -1,6 +1,6 @@
 let datos_medios_transporte_grafica =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})

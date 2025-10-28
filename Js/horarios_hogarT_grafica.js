@@ -1,6 +1,6 @@
 let datos_horarios_hogarT_grafica =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["¿Cuál es el horario típico de su primer viaje?_Homologado"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["¿Cuál es el horario típico de su primer viaje?_Homologado"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})

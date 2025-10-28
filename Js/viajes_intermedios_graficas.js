@@ -1,6 +1,6 @@
 let datos_viajes_intermedios_grafica =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["¿Cuántos viajes intermedios realiza antes de llegar a su destino final?_Hogar_Trabajo"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["¿Cuántos viajes intermedios realiza antes de llegar a su destino final?_Hogar_Trabajo"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})

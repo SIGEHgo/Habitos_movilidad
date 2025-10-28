@@ -1,6 +1,6 @@
 let datos_genero_grafica =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d.Genero;
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties.Genero;
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})

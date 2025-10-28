@@ -1,6 +1,6 @@
 let datos_accesibilidad_trabajoH_grafica =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["¿Cómo calificaría la accesibilidad al transporte público desde su lugar de trabajo?"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["¿Cómo calificaría la accesibilidad al transporte público desde su lugar de trabajo?"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})

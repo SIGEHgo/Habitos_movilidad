@@ -3,56 +3,56 @@ function unirColumnas(...columnas) {
 }
 
 let datos_vehiculo_particular_hogarT =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Vehículo particular]_Hogar_Trabajo"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Vehículo particular]_Hogar_Trabajo"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
 ).map(([g, v]) => ({ g, v}));
 
 let datos_transporte_publico_hogarT =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Transporte público colectivo (micro, urvan, combi)]_Hogar_Trabajo"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Transporte público colectivo (micro, urvan, combi)]_Hogar_Trabajo"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
 ).map(([g, v]) => ({ g, v}));
 
 let datos_tuzobus_hogarT =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Tuzobús]_Hogar_Trabajo"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Tuzobús]_Hogar_Trabajo"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
 ).map(([g, v]) => ({ g, v}));
 
 let datos_taxi_hogarT =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Taxi]_Hogar_Trabajo"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Taxi]_Hogar_Trabajo"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
 ).map(([g, v]) => ({ g, v}));
 
 let datos_bicicleta_hogarT =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Bicicleta]_Hogar_Trabajo"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Bicicleta]_Hogar_Trabajo"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
 ).map(([g, v]) => ({ g, v}));
 
 let datos_pie_hogarT =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [A pie]_Hogar_Trabajo"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [A pie]_Hogar_Trabajo"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
 ).map(([g, v]) => ({ g, v}));
 
 let datos_auto_compartido_hogarT =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Auto compartido]_Hogar_Trabajo"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Auto compartido]_Hogar_Trabajo"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})

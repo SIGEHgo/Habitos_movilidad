@@ -1,6 +1,6 @@
 let datos_tiempo_trabajoH_grafica =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["¿Cuál es el tiempo de traslado que realiza a su domicilio particular?_Trabajo_Hogar"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["¿Cuál es el tiempo de traslado que realiza a su domicilio particular?_Trabajo_Hogar"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})

@@ -1,6 +1,6 @@
 let datos_gasto_mensual_grafica =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["Normalmente, ¿Cuánto gasta mensualmente en transporte?"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["Normalmente, ¿Cuánto gasta mensualmente en transporte?"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})

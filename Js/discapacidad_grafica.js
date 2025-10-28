@@ -1,6 +1,6 @@
 let datos_discapacidad_grafica =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["¿Usted presenta alguna discapacidad?"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["¿Usted presenta alguna discapacidad?"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})

@@ -1,6 +1,6 @@
 let datos_edad_grafica =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d.Edad_Clasificacion;
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties.Edad_Clasificacion;
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})

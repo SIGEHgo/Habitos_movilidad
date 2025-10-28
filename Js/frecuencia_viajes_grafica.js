@@ -1,6 +1,6 @@
 let datos_frecuencia_viajes_grafica =  Object.entries(
-  datos.reduce((acc, d) => {
-    const clave = d["¿Con qué frecuencia realiza este viaje?_Hogar_Trabajo"];
+  datos.features.reduce((acc, d) => {
+    const clave = d.properties["¿Con qué frecuencia realiza este viaje?_Hogar_Trabajo"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
