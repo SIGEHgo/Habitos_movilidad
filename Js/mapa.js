@@ -78,16 +78,39 @@ L.control.layers({}, overlays, { collapsed: true }).addTo(map);
 
 
 function actualizarGraficasBasadoEnFeaturesVisibles() {
-    const bounds = map.getBounds();
+  const bounds = map.getBounds();
 
-    datos_filtrados = datos.features.filter(feature => {
-        const lat = feature.geometry.coordinates[1];
-        const lng = feature.geometry.coordinates[0];
-        return bounds.contains([lat, lng]);
-    })
+  datos_filtrados = datos.features.filter((feature) => {
+    const lat = feature.geometry.coordinates[1];
+    const lng = feature.geometry.coordinates[0];
+    //rellenes datos_edad_grafica.
+    return bounds.contains([lat, lng]);
+  });
 
-    // Aquí puedes actualizar las gráficas usando datos_filtrados
-    console.log("Número de features visibles:", datos_filtrados.length);
+  // Aquí puedes actualizar las gráficas usando datos_filtrados
+  console.log("Número de features visibles:", datos_filtrados.length);
+
+
+  // Primera pestaña
+  datos_edad_grafica = Object.entries(
+    datos_filtrados.reduce((acc, d) => {
+      const clave = d.properties.Edad_Clasificacion;
+      acc[clave] = (acc[clave] || 0) + 1;
+      return acc;
+    }, {})
+  ).map(([g, v]) => ({ g, v }));
+  actualizador_edad_grafica.data.datasets[0].data = datos_edad_grafica.map(d => d.v);
+  actualizador_edad_grafica.data.labels = datos_edad_grafica.map(d => d.g);
+  actualizador_edad_grafica.update();
+
+
+  
+
+
+
+
+
+
 }
 
 map.on("zoomend dragend", actualizarGraficasBasadoEnFeaturesVisibles);

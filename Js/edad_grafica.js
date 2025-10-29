@@ -9,7 +9,7 @@ let datos_edad_grafica =  Object.entries(
 
 const ctx = document.getElementById('edad_grafica').getContext('2d');
 
-new Chart(ctx, {
+let actualizador_edad_grafica = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: datos_edad_grafica.map(d => d.g),
