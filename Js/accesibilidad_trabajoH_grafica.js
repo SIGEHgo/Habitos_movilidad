@@ -9,7 +9,7 @@ let datos_accesibilidad_trabajoH_grafica =  Object.entries(
 
 const ctx15 = document.getElementById('accesibilidad_trabajoH_grafica').getContext('2d');
 
-new Chart(ctx15, {
+actualizador_accesibilidad_trabajoH_grafica = new Chart(ctx15, {
   type: 'doughnut',
   data: {
     labels: datos_accesibilidad_trabajoH_grafica.map(d => d.g),

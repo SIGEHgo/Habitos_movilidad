@@ -242,6 +242,42 @@ actualizador_horarios_hogarT_grafica.update();
 
 // Cuarta pestaña
 
+datos_tiempo_trabajoH_grafica =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["¿Cuál es el tiempo de traslado que realiza a su domicilio particular?_Trabajo_Hogar"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {})
+).map(([g, v]) => ({g, v}));
+actualizador_tiempo_trabajoH_grafica.data.datasets[0].data = datos_tiempo_trabajoH_grafica.map(d => d.v);
+actualizador_tiempo_trabajoH_grafica.data.labels = datos_tiempo_trabajoH_grafica.map(d => d.g);
+actualizador_tiempo_trabajoH_grafica.update();
+
+
+datos_accesibilidad_trabajoH_grafica =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["¿Cómo calificaría la accesibilidad al transporte público desde su lugar de trabajo?"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {})
+).map(([g, v]) => ({g, v}));
+actualizador_accesibilidad_trabajoH_grafica.data.datasets[0].data = datos_accesibilidad_trabajoH_grafica.map(d => d.v);
+actualizador_accesibilidad_trabajoH_grafica.data.labels = datos_accesibilidad_trabajoH_grafica.map(d => d.g);
+actualizador_accesibilidad_trabajoH_grafica.update();
+
+
+
+datos_horarios_trabajoH_grafica =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["Comúnmente, ¿En qué horario realiza el viaje de regreso a su domicilio particular?_Trabajo_Hogar"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {})
+).map(([g, v]) => ({ g, v}));
+actualizador_horarios_trabajoH_grafica.data.datasets[0].data = datos_horarios_trabajoH_grafica.map(d => d.v);
+actualizador_horarios_trabajoH_grafica.data.labels = datos_horarios_trabajoH_grafica.map(d => d.g);
+actualizador_horarios_trabajoH_grafica.update();
+
 
 
 

@@ -9,7 +9,7 @@ let datos_tiempo_trabajoH_grafica =  Object.entries(
 
 const ctx14 = document.getElementById('tiempo_trabajoH_grafica').getContext('2d');
 
-new Chart(ctx14, {
+actualizador_tiempo_trabajoH_grafica = new Chart(ctx14, {
   type: 'bar',
   data: {
     labels: datos_tiempo_trabajoH_grafica.map(d => d.g),
