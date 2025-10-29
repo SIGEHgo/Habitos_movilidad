@@ -1,4 +1,4 @@
-var map = L.map('map').setView([20.12248590121993, -98.73668905258992], 13);
+var map = L.map('map').setView([20.4784, -98.8636], 8);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -14,6 +14,61 @@ let invisible = L.geoJSON(datos, {
     }
 });
 invisible.addTo(map);
+
+L.geoJSON(hogar_cp, {
+    style: function (feature) {
+        return {
+            color: 'rgba(179, 142, 93, 1)',
+            weight: 2,
+            fillOpacity: 0.4
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        const p = feature.properties || {};
+        const html1 = `
+            <b>Código Postal:</b> ${p["Código postal_Hogar_Trabajo"]}
+            <br><b>Municipio:</b> ${p.NOM_MUN}
+            <br><b>Lugares a donde van:</b> ${p.depencia}
+            <br><b>Total de personas que viajan:</b> ${p.n}
+        `;
+        
+        layer.bindPopup(html1);
+        layer.bindTooltip(p["Código postal_Hogar_Trabajo"], { 
+            direction: "center" 
+        });
+    }
+}).addTo(map);
+
+const trabajoLayer = L.geoJSON(trabajo_cp, {
+    style: function (feature) {
+        return {
+            color: 'rgba(98, 17, 50, 1)',
+            weight: 2,
+            fillOpacity: 0.4
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        const p = feature.properties || {};
+        const html2 = `
+            <b>Código Postal:</b> ${p["Código Postal_Trabajo_Hogar"]}
+            <br><b>Municipio:</b> ${p.NOM_MUN}
+            <br><b>Dependencias:</b> ${p.depencia}
+            <br><b>Personas que trabajan:</b> ${p.n}
+        `;
+        layer.bindPopup(html2);
+        layer.bindTooltip(p["Código Postal_Trabajo_Hogar"], {
+            direction: "center"
+        });
+    }
+});
+
+const overlays = {
+    "Zonas de trabajo": trabajoLayer
+};
+
+L.control.layers({}, overlays, { collapsed: true }).addTo(map);
+
+
 
 
 
