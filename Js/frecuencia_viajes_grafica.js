@@ -9,7 +9,7 @@ let datos_frecuencia_viajes_grafica =  Object.entries(
 
 const ctx6 = document.getElementById('frecuencia_viajes_grafica').getContext('2d');
 
-new Chart(ctx6, {
+actualizador_frecuencia_viajes_grafica =new Chart(ctx6, {
   type: 'pie',
   data: {
     labels: datos_frecuencia_viajes_grafica.map(d => d.g),

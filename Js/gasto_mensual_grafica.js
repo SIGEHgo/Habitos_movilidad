@@ -9,7 +9,7 @@ let datos_gasto_mensual_grafica =  Object.entries(
 
 const ctx8 = document.getElementById('gasto_mensual_grafica').getContext('2d');
 
-new Chart(ctx8, {
+let actualizador_gasto_mensual_grafica = new Chart(ctx8, {
   type: 'bar',
   data: {
     labels: datos_gasto_mensual_grafica.map(d => d.g),

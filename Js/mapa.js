@@ -149,6 +149,54 @@ function actualizarGraficasBasadoEnFeaturesVisibles() {
 
   // Segunda pestaña
 
+  datos_medios_transporte_grafica = Object.entries(
+    datos_filtrados.reduce((acc, d) => {
+      const clave = d.properties["¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio"];
+      acc[clave] = (acc[clave] || 0) + 1;
+      return acc;
+    }, {})
+  ).map(([g, v]) => ({ g, v }));
+  actualizador_medios_transporte_grafica.data.datasets[0].tree = datos_medios_transporte_grafica;
+  actualizador_medios_transporte_grafica.update();
+
+
+
+datos_frecuencia_viajes_grafica = Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["¿Con qué frecuencia realiza este viaje?_Hogar_Trabajo"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {})
+).map(([g, v]) => ({ g, v }));
+actualizador_frecuencia_viajes_grafica.data.datasets[0].data = datos_frecuencia_viajes_grafica.map(d => d.v);
+actualizador_frecuencia_viajes_grafica.data.labels = datos_frecuencia_viajes_grafica.map(d => d.g);
+actualizador_frecuencia_viajes_grafica.update();
+
+
+
+datos_viajes_intermedios_grafica =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["¿Cuántos viajes intermedios realiza antes de llegar a su destino final?_Hogar_Trabajo"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {})
+).map(([g, v]) => ({ g, v}));
+actualizador_viajes_intermedios_grafica.data.datasets[0].data = datos_viajes_intermedios_grafica.map(d => d.v);
+actualizador_viajes_intermedios_grafica.data.labels = datos_viajes_intermedios_grafica.map(d => d.g);
+actualizador_viajes_intermedios_grafica.update();
+
+
+
+datos_gasto_mensual_grafica =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["Normalmente, ¿Cuánto gasta mensualmente en transporte?"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {})
+).map(([g, v]) => ({ g, v}));
+actualizador_gasto_mensual_grafica.data.datasets[0].data = datos_gasto_mensual_grafica.map(d => d.v);
+actualizador_gasto_mensual_grafica.data.labels = datos_gasto_mensual_grafica.map(d => d.g);
+actualizador_gasto_mensual_grafica.update();    
 
 
 

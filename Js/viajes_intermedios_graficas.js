@@ -9,7 +9,7 @@ let datos_viajes_intermedios_grafica =  Object.entries(
 
 const ctx7 = document.getElementById('viajes_intermedios_grafica').getContext('2d');
 
-new Chart(ctx7, {
+actualizador_viajes_intermedios_grafica = new Chart(ctx7, {
   type: 'bar',
   data: {
     labels: datos_viajes_intermedios_grafica.map(d => d.g),

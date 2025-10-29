@@ -26,7 +26,7 @@ function color_medios_transporte_grafica(ctx) {
 
 const ctx5 = document.getElementById('medios_transporte_grafica').getContext('2d');
 
-new Chart(ctx5, {
+actualizador_medios_transporte_grafica = new Chart(ctx5, {
     type: 'treemap',
     data: {
         datasets: [
