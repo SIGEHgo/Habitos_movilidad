@@ -20,6 +20,8 @@ invisible.addTo(map);
 
 
 
+
+
 function actualizarGraficasBasadoEnFeaturesVisibles() {
     const bounds = map.getBounds();
 

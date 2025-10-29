@@ -4,7 +4,7 @@ datos = readxl::read_excel("Output/datos_filtrados.xlsx")
 mun = sf::read_sf("../../Importantes_documentos_usar/Municipios/municipiosjair.shp")
 
 codigo_geometrias = sf::read_sf("Datos/CP_Hgo.shp")
-codigo_geometrias = codigo_geometrias |> sf::st_transform(crs = 4326)
+codigo_geometrias = codigo_geometrias |> sf::st_transform(crs = 4326) |>  sf::st_make_valid()
 
 hogar = datos |>  dplyr::select(Dependencia, `Código postal_Hogar_Trabajo`) |>  unique()
 hogar = hogar |> 
@@ -19,21 +19,29 @@ hogar = hogar |>
   dplyr::mutate(depencia = depencia |>  gsub(pattern = ",", replacement = ", ")) |> 
   dplyr::arrange(dplyr::desc(n))
 
-hogar = hogar |>  dplyr::left_join(y = codigo_geometrias, by = c("Código postal_Hogar_Trabajo" = "d_cp")) |> 
-  sf::st_sf(crs = 4326) |>  sf::st_make_valid()
+hogar = hogar |>  dplyr::left_join(y = codigo_geometrias, by = c("Código postal_Hogar_Trabajo" = "d_cp"))  |>  sf::st_as_sf(crs = 4326)
 
 
-p = sf::st_join(x = hogar, y = mun, join = sf::st_intersects)
 
-leaflet() |> 
-  addTiles() |> 
-  addPolygons(data = hogar, popup = hogar$`Código postal_Hogar_Trabajo`)
+municipios_hogar = sf::st_join(x = hogar |>  sf::st_centroid(), y = mun, join = sf::st_intersects)
+municipios_hogar = municipios_hogar |>  dplyr::select(`Código postal_Hogar_Trabajo`, NOM_MUN) |>  sf::st_drop_geometry()
+hogar = hogar |>  dplyr::left_join(y = municipios_hogar, by = c("Código postal_Hogar_Trabajo" = "Código postal_Hogar_Trabajo")) |> 
+  dplyr::relocate(NOM_MUN, .after = `Código postal_Hogar_Trabajo`)
 
 
-library(leaflet)
-leaflet() |> 
-  addTiles() |> 
-  addPolygons(data = codigo_geometrias |>  sf::st_transform(crs = 4326), popup = codigo_geometrias$d_cp)
+sf::st_write(hogar, "Output/Base_geometria/hogar_cp.geojson", driver = "GeoJSON", delete_dsn = TRUE)
+
+
+
+# leaflet() |> 
+#   addTiles() |> 
+#   addPolygons(data = hogar, popup = hogar$`Código postal_Hogar_Trabajo`)
+# 
+# 
+# library(leaflet)
+# leaflet() |> 
+#   addTiles() |> 
+#   addPolygons(data = codigo_geometrias |>  sf::st_transform(crs = 4326), popup = codigo_geometrias$d_cp)
 
 
 
@@ -48,8 +56,21 @@ trabajo = trabajo |>
   dplyr::mutate(depencia = depencia |> gsub(pattern = ",", replacement = ", "))
 
 
+
+
 trabajo = trabajo |>  dplyr::left_join(y = codigo_geometrias, by = c("Código Postal_Trabajo_Hogar" = "d_cp")) |>  sf::st_as_sf(crs = 4326)
+municipio_trabajo = trabajo |>  sf::st_centroid() |>  sf::st_join(y = mun, join = sf::st_intersects) |>  
+  dplyr::select(`Código Postal_Trabajo_Hogar`, NOM_MUN) |>  sf::st_drop_geometry()
+
+trabajo = trabajo |> dplyr::left_join(y = municipio_trabajo, by = c("Código Postal_Trabajo_Hogar" = "Código Postal_Trabajo_Hogar")) |> 
+  dplyr::relocate(NOM_MUN, .after = `Código Postal_Trabajo_Hogar`)
+
+trabajo_conteo = datos |> 
+  dplyr::count(`Código Postal_Trabajo_Hogar`)
 
 
-trabajo = trabajo |> 
-  dplyr::filter(geometry |>  sf::st_is_empty())
+trabajo = trabajo |>  dplyr::left_join(y = trabajo_conteo, by = c("Código Postal_Trabajo_Hogar" = "Código Postal_Trabajo_Hogar")) |> 
+  dplyr::relocate(n, .after = depencia) |>  dplyr::arrange(dplyr::desc(n))
+
+
+sf::st_write(trabajo, "Output/Base_geometria/trabajo_cp.geojson", driver = "GeoJSON", delete_dsn = TRUE)
