@@ -353,6 +353,27 @@ datos = datos |>
 datos = datos |>  dplyr::mutate(
   `Código Postal_Trabajo_Hogar` = dplyr::if_else(condition = is.na(`Código Postal_Trabajo_Hogar`), true = "42000", false = `Código Postal_Trabajo_Hogar` )
 )
+
+datos = datos |> dplyr::mutate(
+  `¿Usted presenta alguna discapacidad?` = dplyr::if_else(condition = `¿Usted presenta alguna discapacidad?` == "Si", true = "Sí",  false = `¿Usted presenta alguna discapacidad?`)
+)
+
+datos = datos |> dplyr::mutate(
+  `¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio` = dplyr::case_when(
+    `¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio` == "taxi"~"Taxi",
+    `¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio` == "vehiculo particular"~"Vehículo particular",
+    `¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio` == "a pie"~"A pie",
+    `¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio` == "transporte publico colectivo (micro, urvan, combi)"~"Transporte público colectivo (micro, urvan, combi)",
+    `¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio` == "auto compartido"~"Auto compartido",
+    `¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio` == "tuzobus"~"Tuzobús",
+    `¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio` == "bicicleta"~"Bicicleta",
+    `¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio` == "otros"~"Otros",
+    TRUE ~ `¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio`
+  )
+)
+
+
+
 write.csv(datos, "Output/base_filtrada_completa.csv", row.names = F)
 writexl::write_xlsx(datos, "Output/base_filtrada_completa_excel.xlsx")
 

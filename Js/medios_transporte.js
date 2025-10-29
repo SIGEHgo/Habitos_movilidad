@@ -11,14 +11,14 @@ function color_medios_transporte_grafica(ctx) {
     if (ctx.type !== 'data') { return 'transparent'; }
     const nombres = ctx.raw.g;
     const colors = {
-    'tuzobus': '#FF5733',
-    'taxi': '#33FF57',
-    'transporte publico colectivo (micro, urvan, combi)': '#3357FF',
-    'bicicleta': '#F1C40F',
-    'a pie': '#9B59B6',
-    'vehiculo particular': '#E67E22',
-    'auto compartido': '#2ECC71',
-    'otros': '#1ABC9C',
+    'Tuzobús': 'rgba(232, 216, 195, 1)',
+    'Taxi': 'rgba(98, 17, 50, 1)',
+    'Transporte público colectivo (micro, urvan, combi)': 'rgba(179, 142, 93, 1)',
+    'Bicicleta': '#c4c4c4',
+    'A pie': '#ebc7d0',
+    'Vehículo particular': '#a01f41',
+    'Auto compartido': '#254d50',
+    'Otros': '#1ABC9C',
   };
     return colors[nombres] || '#CCCCCC';
 }
@@ -34,7 +34,7 @@ actualizador_medios_transporte_grafica = new Chart(ctx5, {
             tree: datos_medios_transporte_grafica,
             key: 'v',          
             groups: ['g'],  
-            borderColor: 'green',
+            borderColor: 'rgb(179, 142, 93)',
             borderWidth: 1,
             spacing: 1,
             labels: {
@@ -51,7 +51,7 @@ actualizador_medios_transporte_grafica = new Chart(ctx5, {
         plugins: {
             title: {
                 display: true,
-                text: 'Medios transporte',
+                text: 'Medios de transporte',
                 padding: { top: 0, bottom: 0 },
                 font: {
                     size: 24,

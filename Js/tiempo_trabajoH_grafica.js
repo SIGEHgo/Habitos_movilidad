@@ -17,7 +17,7 @@ actualizador_tiempo_trabajoH_grafica = new Chart(ctx14, {
       {
         label: 'Frecuencia',
         data: datos_tiempo_trabajoH_grafica.map(d => d.v),
-        backgroundColor: ['rgba(98, 17, 50, 1)'],
+        backgroundColor: ['#254d50'],
         borderColor: ['rgba(179, 142, 93, 1)'],
         borderWidth: 1
       }

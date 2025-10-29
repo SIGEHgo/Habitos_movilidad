@@ -17,7 +17,7 @@ let actualizador_genero_grafica = new Chart(ctx3, {
       {
         label: 'Frecuencia',
         data: datos_genero_grafica.map(d => d.v),
-        backgroundColor: ['rgba(179, 142, 93, 1)', 'rgba(98, 17, 50, 1)', 'rgba(232, 216, 195, 1)', 'rgba(100, 149, 237, 1)'],
+        backgroundColor: ['rgba(179, 142, 93, 1)', 'rgba(98, 17, 50, 1)', 'rgba(232, 216, 195, 1)', '#c4c4c4'],
         // borderColor: ['rgba(179, 142, 93, 1)'],
         borderWidth: 1,
       }
@@ -30,7 +30,7 @@ let actualizador_genero_grafica = new Chart(ctx3, {
       legend: { display: true },
       title: {
         display: true,
-        text: "Genero",
+        text: "Género",
         padding: { top: 0, bottom: 0 },
         font: {
           size: 24,

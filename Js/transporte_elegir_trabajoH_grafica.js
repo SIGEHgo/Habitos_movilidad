@@ -79,7 +79,7 @@ new Chart(ctx13, {
     labels: [
       "Vehículo particular",
       "Transporte público",
-      "Tubobús",
+      "Tuzobús",
       "Taxi",
       "Bicicleta",
       "A pie",

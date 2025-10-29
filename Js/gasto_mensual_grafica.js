@@ -17,7 +17,7 @@ let actualizador_gasto_mensual_grafica = new Chart(ctx8, {
       {
         label: 'Frecuencia',
         data: datos_gasto_mensual_grafica.map(d => d.v),
-        backgroundColor: ['rgba(179, 142, 93, 1)', 'rgba(98, 17, 50, 1)', 'rgba(232, 216, 195, 1)'],
+        backgroundColor: ['rgba(179, 142, 93, 1)', 'rgba(98, 17, 50, 1)', 'rgba(232, 216, 195, 1)', '#c4c4c4', '#ebc7d0', '#a01f41', '#254d50'],
         borderColor: ['rgba(179, 142, 93, 1)'],
         borderWidth: 1
       }
