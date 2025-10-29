@@ -9,7 +9,7 @@ let datos_genero_grafica =  Object.entries(
 
 const ctx3 = document.getElementById('genero_grafica').getContext('2d');
 
-new Chart(ctx3, {
+let actualizador_genero_grafica = new Chart(ctx3, {
   type: 'pie',
   data: {
     labels: datos_genero_grafica.map(d => d.g),

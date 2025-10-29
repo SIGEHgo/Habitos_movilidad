@@ -104,7 +104,50 @@ function actualizarGraficasBasadoEnFeaturesVisibles() {
   actualizador_edad_grafica.update();
 
 
-  
+
+  datos_genero_grafica = Object.entries(
+    datos_filtrados.reduce((acc, d) => {
+      const clave = d.properties.Genero;
+      acc[clave] = (acc[clave] || 0) + 1;
+      return acc;
+    }, {})
+  ).map(([g, v]) => ({ g, v }));
+  actualizador_genero_grafica.data.datasets[0].data = datos_genero_grafica.map(d => d.v);
+  actualizador_genero_grafica.data.labels = datos_genero_grafica.map(d => d.g);
+  actualizador_genero_grafica.update();
+
+
+
+  datos_discapacidad_grafica = Object.entries(
+    datos_filtrados.reduce((acc, d) => {
+      const clave = d.properties["¿Usted presenta alguna discapacidad?"];
+      acc[clave] = (acc[clave] || 0) + 1;
+      return acc;
+    }, {})
+  ).map(([g, v]) => ({ g, v }));
+  actualizador_discapacidad_grafica.data.datasets[0].data = datos_discapacidad_grafica.map((d) => d.v);
+  actualizador_discapacidad_grafica.data.labels = datos_discapacidad_grafica.map((d) => d.g);
+  actualizador_discapacidad_grafica.update();
+
+
+
+  datos_dependencia_grafica = Object.entries(
+    datos_filtrados.reduce((acc, d) => {
+      const clave = d.properties.Dependencia;
+      acc[clave] = (acc[clave] || 0) + 1;
+      return acc;
+    }, {})
+  ).map(([g, v]) => ({ g, v }));
+  actualizador_dependencia_grafica.data.datasets[0].tree = datos_dependencia_grafica;
+  actualizador_dependencia_grafica.update();
+
+
+
+
+
+
+
+  // Segunda pestaña
 
 
 

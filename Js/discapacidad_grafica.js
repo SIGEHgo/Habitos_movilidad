@@ -9,7 +9,7 @@ let datos_discapacidad_grafica =  Object.entries(
 
 const ctx4 = document.getElementById('discapacidad_grafica').getContext('2d');
 
-new Chart(ctx4, {
+actualizador_discapacidad_grafica = new Chart(ctx4, {
   type: 'doughnut',
   data: {
     labels: datos_discapacidad_grafica.map(d => d.g),

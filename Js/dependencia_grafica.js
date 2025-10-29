@@ -39,7 +39,7 @@ function color_dependencia_grafica(ctx) {
 
 const ctx2 = document.getElementById('dependencia_grafica').getContext('2d');
 
-new Chart(ctx2, {
+actualizador_dependencia_grafica = new Chart(ctx2, {
     type: 'treemap',
     data: {
         datasets: [
