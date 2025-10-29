@@ -9,7 +9,7 @@ let datos_horarios_hogarT_grafica =  Object.entries(
 
 const ctx12 = document.getElementById('horarios_hogarT_grafica').getContext('2d');
 
-new Chart(ctx12, {
+actualizador_horarios_hogarT_grafica = new Chart(ctx12, {
   type: 'bar',
   data: {
     labels: datos_horarios_hogarT_grafica.map(d => d.g),

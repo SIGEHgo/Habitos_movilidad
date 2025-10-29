@@ -66,7 +66,7 @@ const overlays = {
     "Zonas de trabajo": trabajoLayer
 };
 
-L.control.layers({}, overlays, { collapsed: true }).addTo(map);
+L.control.layers({}, overlays, { collapsed: false }).addTo(map);
 
 
 
@@ -148,7 +148,6 @@ function actualizarGraficasBasadoEnFeaturesVisibles() {
 
 
   // Segunda pestaña
-
   datos_medios_transporte_grafica = Object.entries(
     datos_filtrados.reduce((acc, d) => {
       const clave = d.properties["¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio"];
@@ -199,9 +198,118 @@ actualizador_gasto_mensual_grafica.data.labels = datos_gasto_mensual_grafica.map
 actualizador_gasto_mensual_grafica.update();    
 
 
+// Tercera pestaña
+datos_tiempo_hogarT_grafica =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["¿Cuál es el tiempo de traslado que realiza a su lugar de trabajo?_Hogar_Trabajo"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {})
+).map(([g, v]) => ({g, v}));
+actualizador_tiempo_hogarT_grafica.data.datasets[0].data = datos_tiempo_hogarT_grafica.map(d => d.v);
+actualizador_tiempo_hogarT_grafica.data.labels = datos_tiempo_hogarT_grafica.map(d => d.g);
+actualizador_tiempo_hogarT_grafica.update();
+
+
+
+datos_accesibilidad_hogarT_grafica =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["¿Cómo calificaría la accesibilidad al transporte público desde su domicilio particular?_Hogar_Trabajo"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {})
+).map(([g, v]) => ({g, v}));
+
+actualizador_accesibilidad_hogarT_grafica.data.datasets[0].data = datos_accesibilidad_hogarT_grafica.map(d => d.v);
+actualizador_accesibilidad_hogarT_grafica.data.labels = datos_accesibilidad_hogarT_grafica.map(d => d.g);
+actualizador_accesibilidad_hogarT_grafica.update();
+
+
+
+datos_horarios_hogarT_grafica =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["¿Cuál es el horario típico de su primer viaje?_Homologado"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {})
+).map(([g, v]) => ({ g, v}));
+actualizador_horarios_hogarT_grafica.data.datasets[0].data = datos_horarios_hogarT_grafica.map(d => d.v);
+actualizador_horarios_hogarT_grafica.data.labels = datos_horarios_hogarT_grafica.map(d => d.g);
+actualizador_horarios_hogarT_grafica.update();
+
+
+
+
+// Cuarta pestaña
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 }
+
+
 
 map.on("zoomend dragend", actualizarGraficasBasadoEnFeaturesVisibles);
