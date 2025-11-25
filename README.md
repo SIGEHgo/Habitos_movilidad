@@ -1,1 +1,1 @@
-https://sigehgo.github.io/Habitos_movilidad/interfaz.html
+https://sigehgo.github.io/Habitos_movilidad/index.html
