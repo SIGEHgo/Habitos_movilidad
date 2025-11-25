@@ -90,8 +90,10 @@ function actualizarGraficasBasadoEnFeaturesVisibles() {
   // Aquí puedes actualizar las gráficas usando datos_filtrados
   console.log("Número de features visibles:", datos_filtrados.length);
 
+  /////////////////////
+  // Primera pestaña //
+  /////////////////////
 
-  // Primera pestaña
   datos_edad_grafica = Object.entries(
     datos_filtrados.reduce((acc, d) => {
       const clave = d.properties.Edad_Clasificacion;
@@ -146,8 +148,10 @@ function actualizarGraficasBasadoEnFeaturesVisibles() {
 
 
 
+  /////////////////////
+  // Segunda pestaña //
+  /////////////////////
 
-  // Segunda pestaña
   datos_medios_transporte_grafica = Object.entries(
     datos_filtrados.reduce((acc, d) => {
       const clave = d.properties["¿Qué medio de transporte utiliza para llegar a su lugar de trabajo?_Hogar_Trabajo_limpio"];
@@ -197,8 +201,10 @@ actualizador_gasto_mensual_grafica.data.datasets[0].data = datos_gasto_mensual_g
 actualizador_gasto_mensual_grafica.data.labels = datos_gasto_mensual_grafica.map(d => d.g);
 actualizador_gasto_mensual_grafica.update();    
 
+//////////////////////
+// Tercera pestaña //
+////////////////////
 
-// Tercera pestaña
 datos_tiempo_hogarT_grafica =  Object.entries(
   datos_filtrados.reduce((acc, d) => {
     const clave = d.properties["¿Cuál es el tiempo de traslado que realiza a su lugar de trabajo?_Hogar_Trabajo"];
@@ -239,8 +245,9 @@ actualizador_horarios_hogarT_grafica.update();
 
 
 
-
-// Cuarta pestaña
+/////////////////////
+// Cuarta pestaña //
+///////////////////
 
 datos_tiempo_trabajoH_grafica =  Object.entries(
   datos_filtrados.reduce((acc, d) => {
