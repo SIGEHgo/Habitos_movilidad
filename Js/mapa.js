@@ -196,13 +196,27 @@ actualizador_viajes_intermedios_grafica.update();
 
 
 
-datos_gasto_mensual_grafica =  Object.entries(
+datos_gasto_mensual_grafica = Object.entries(
   datos_filtrados.reduce((acc, d) => {
-    const clave = d.properties["Normalmente, ¿Cuánto gasta mensualmente en transporte?"];
+    const clave =
+      d.properties["Normalmente, ¿Cuánto gasta mensualmente en transporte?"];
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
-).map(([g, v]) => ({ g, v}));
+)
+  .map(([g, v]) => ({ g, v }))
+  .sort((a, b) => {
+    const ordenDeseado = [
+      "Menos de $500.00",
+      "De $501.00 a $1,000.00",
+      "De $1,001.00 a $1,500.00",
+      "De $1,501.00 a $2,000.00",
+      "De $2,001.00 a $2,500.00",
+      "De $2,501.00 a $3,000.00",
+      "Más de $3,000.00",
+    ];
+    return ordenDeseado.indexOf(a.g) - ordenDeseado.indexOf(b.g);
+  });
 actualizador_gasto_mensual_grafica.data.datasets[0].data = datos_gasto_mensual_grafica.map(d => d.v);
 actualizador_gasto_mensual_grafica.data.labels = datos_gasto_mensual_grafica.map(d => d.g);
 actualizador_gasto_mensual_grafica.update();    
