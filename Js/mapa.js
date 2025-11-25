@@ -100,7 +100,13 @@ function actualizarGraficasBasadoEnFeaturesVisibles() {
       acc[clave] = (acc[clave] || 0) + 1;
       return acc;
     }, {})
-  ).map(([g, v]) => ({ g, v }));
+  )
+    .map(([g, v]) => ({ g, v }))
+    .sort((a, b) => {
+      const ordenDeseado = ["20-30 años", "31-59 años", "60 y más"];
+      return ordenDeseado.indexOf(a.g) - ordenDeseado.indexOf(b.g);
+    });
+
   actualizador_edad_grafica.data.datasets[0].data = datos_edad_grafica.map(d => d.v);
   actualizador_edad_grafica.data.labels = datos_edad_grafica.map(d => d.g);
   actualizador_edad_grafica.update();

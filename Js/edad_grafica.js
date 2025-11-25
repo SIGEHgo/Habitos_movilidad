@@ -1,10 +1,24 @@
-let datos_edad_grafica =  Object.entries(
+// let datos_edad_grafica =  Object.entries(
+//   datos.features.reduce((acc, d) => {
+//     const clave = d.properties.Edad_Clasificacion;
+//     acc[clave] = (acc[clave] || 0) + 1;
+//     return acc;
+//   }, {})
+// ).map(([g, v]) => ({ g, v}));
+
+
+let datos_edad_grafica = Object.entries(
   datos.features.reduce((acc, d) => {
     const clave = d.properties.Edad_Clasificacion;
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
-).map(([g, v]) => ({ g, v}));
+)
+.map(([g, v]) => ({ g, v }))
+.sort((a, b) => {
+  const ordenDeseado = ["20-30 años", "31-59 años", "60 y más"];
+  return ordenDeseado.indexOf(a.g) - ordenDeseado.indexOf(b.g);
+});
 
 
 const ctx = document.getElementById('edad_grafica').getContext('2d');
