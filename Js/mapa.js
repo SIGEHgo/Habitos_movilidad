@@ -231,7 +231,11 @@ datos_tiempo_hogarT_grafica =  Object.entries(
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
-).map(([g, v]) => ({g, v}));
+).map(([g, v]) => ({g, v}))
+.sort((a, b) => {
+  const ordenDeseado = ["Menos de 10 min.", "De 10 a 15 min.", "De 16 a 30 min.", "De 31 a 60 min.", "Más de 1 hora"];
+  return ordenDeseado.indexOf(a.g) - ordenDeseado.indexOf(b.g);
+});
 actualizador_tiempo_hogarT_grafica.data.datasets[0].data = datos_tiempo_hogarT_grafica.map(d => d.v);
 actualizador_tiempo_hogarT_grafica.data.labels = datos_tiempo_hogarT_grafica.map(d => d.g);
 actualizador_tiempo_hogarT_grafica.update();
@@ -258,7 +262,11 @@ datos_horarios_hogarT_grafica =  Object.entries(
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
-).map(([g, v]) => ({ g, v}));
+).map(([g, v]) => ({ g, v}))
+.sort((a, b) => {
+  const ordenDeseado = ["06:00 - 07:00 am", "07:00 - 08:00 am", "08:00 - 09:00 am", "09:00 - 10:00 am", "Otro"];
+  return ordenDeseado.indexOf(a.g) - ordenDeseado.indexOf(b.g);
+});
 actualizador_horarios_hogarT_grafica.data.datasets[0].data = datos_horarios_hogarT_grafica.map(d => d.v);
 actualizador_horarios_hogarT_grafica.data.labels = datos_horarios_hogarT_grafica.map(d => d.g);
 actualizador_horarios_hogarT_grafica.update();
@@ -275,7 +283,11 @@ datos_tiempo_trabajoH_grafica =  Object.entries(
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
-).map(([g, v]) => ({g, v}));
+).map(([g, v]) => ({g, v}))
+.sort((a, b) => {
+  const ordenDeseado = ["Menos de 10 min.", "De 10 a 15 min.", "De 16 a 30 min.", "De 31 a 60 min.", "Más de 1 hora"];
+  return ordenDeseado.indexOf(a.g) - ordenDeseado.indexOf(b.g);
+});
 actualizador_tiempo_trabajoH_grafica.data.datasets[0].data = datos_tiempo_trabajoH_grafica.map(d => d.v);
 actualizador_tiempo_trabajoH_grafica.data.labels = datos_tiempo_trabajoH_grafica.map(d => d.g);
 actualizador_tiempo_trabajoH_grafica.update();
@@ -300,7 +312,11 @@ datos_horarios_trabajoH_grafica =  Object.entries(
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
-).map(([g, v]) => ({ g, v}));
+).map(([g, v]) => ({ g, v}))
+.sort((a, b) => {
+  const ordenDeseado = ["3:00 a 4:30 pm", "4:30 – 5:30 pm", "5::30 – 6:30 pm", "6:30 – 7:00 pm", "7:00 – 7:30 pm", "7:30 pm  en adelante"];
+  return ordenDeseado.indexOf(a.g) - ordenDeseado.indexOf(b.g);
+});
 actualizador_horarios_trabajoH_grafica.data.datasets[0].data = datos_horarios_trabajoH_grafica.map(d => d.v);
 actualizador_horarios_trabajoH_grafica.data.labels = datos_horarios_trabajoH_grafica.map(d => d.g);
 actualizador_horarios_trabajoH_grafica.update();

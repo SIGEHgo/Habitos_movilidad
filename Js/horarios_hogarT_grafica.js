@@ -4,7 +4,11 @@ let datos_horarios_hogarT_grafica =  Object.entries(
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
-).map(([g, v]) => ({ g, v}));
+).map(([g, v]) => ({ g, v}))
+.sort((a, b) => {
+  const ordenDeseado = ["06:00 - 07:00 am", "07:00 - 08:00 am", "08:00 - 09:00 am", "09:00 - 10:00 am", "Otro"];
+  return ordenDeseado.indexOf(a.g) - ordenDeseado.indexOf(b.g);
+});
 
 
 const ctx12 = document.getElementById('horarios_hogarT_grafica').getContext('2d');

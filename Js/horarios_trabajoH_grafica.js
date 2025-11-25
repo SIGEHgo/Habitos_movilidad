@@ -4,7 +4,11 @@ let datos_horarios_trabajoH_grafica =  Object.entries(
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
-).map(([g, v]) => ({ g, v}));
+).map(([g, v]) => ({ g, v}))
+.sort((a, b) => {
+  const ordenDeseado = ["3:00 a 4:30 pm", "4:30 – 5:30 pm", "5::30 – 6:30 pm", "6:30 – 7:00 pm", "7:00 – 7:30 pm", "7:30 pm  en adelante"];
+  return ordenDeseado.indexOf(a.g) - ordenDeseado.indexOf(b.g);
+});
 
 
 const ctx16 = document.getElementById('horarios_trabajoH_grafica').getContext('2d');

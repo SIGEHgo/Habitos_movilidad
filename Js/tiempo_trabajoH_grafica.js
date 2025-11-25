@@ -4,7 +4,11 @@ let datos_tiempo_trabajoH_grafica =  Object.entries(
     acc[clave] = (acc[clave] || 0) + 1;
     return acc;
   }, {})
-).map(([g, v]) => ({g, v}));
+).map(([g, v]) => ({g, v}))
+.sort((a, b) => {
+  const ordenDeseado = ["Menos de 10 min.", "De 10 a 15 min.", "De 16 a 30 min.", "De 31 a 60 min.", "Más de 1 hora"];
+  return ordenDeseado.indexOf(a.g) - ordenDeseado.indexOf(b.g);
+});
 
 
 const ctx14 = document.getElementById('tiempo_trabajoH_grafica').getContext('2d');
