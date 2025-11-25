@@ -443,6 +443,14 @@ orden = orden |>
   sf::st_make_valid() |> 
   sf::st_centroid()
 
+orden = orden |> 
+  dplyr::select(
+    -`Marca temporal`,
+    -`Dirección de correo electrónico`,
+    -Nombre,
+    -Edad
+  )
+
 sf::st_write(orden, "Output/Base_geometria/datos_filtrados.geojson", driver = "GeoJSON", delete_dsn = TRUE)
 
 
