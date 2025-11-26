@@ -322,9 +322,167 @@ actualizador_horarios_trabajoH_grafica.data.labels = datos_horarios_trabajoH_gra
 actualizador_horarios_trabajoH_grafica.update();
 
 
+/////////////////////////////////////////////////////////
+/// Alternativas de transporte para realizar el viaje ///
+/////////////////////////////////////////////////////////
+
+datos_vehiculo_particular_hogarT =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Vehículo particular]_Hogar_Trabajo"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
+
+datos_transporte_publico_hogarT =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Transporte público colectivo (micro, urvan, combi)]_Hogar_Trabajo"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
+
+datos_tuzobus_hogarT =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Tuzobús]_Hogar_Trabajo"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
+
+datos_taxi_hogarT =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Taxi]_Hogar_Trabajo"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
+
+datos_bicicleta_hogarT =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Bicicleta]_Hogar_Trabajo"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
+
+datos_pie_hogarT =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [A pie]_Hogar_Trabajo"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
+
+datos_auto_compartido_hogarT =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su lugar de trabajo? (Deberá elegir una opción diferente en cada columna) [Auto compartido]_Hogar_Trabajo"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
 
 
+matriz_hogarT = unirColumnas(
+  datos_vehiculo_particular_hogarT.map(d => d.v),
+  datos_transporte_publico_hogarT.map(d => d.v),
+  datos_tuzobus_hogarT.map(d => d.v),
+  datos_taxi_hogarT.map(d => d.v),
+  datos_bicicleta_hogarT.map(d => d.v),
+  datos_pie_hogarT.map(d => d.v),
+  datos_auto_compartido_hogarT.map(d => d.v),
+);
 
+
+actualizador_transporte_elegir_hogarT_grafica.data.datasets[0].data = matriz_hogarT[0];
+actualizador_transporte_elegir_hogarT_grafica.data.datasets[1].data = matriz_hogarT[1];
+actualizador_transporte_elegir_hogarT_grafica.data.datasets[2].data = matriz_hogarT[2];
+actualizador_transporte_elegir_hogarT_grafica.data.datasets[3].data = matriz_hogarT[3];
+actualizador_transporte_elegir_hogarT_grafica.data.datasets[4].data = matriz_hogarT[4];
+actualizador_transporte_elegir_hogarT_grafica.data.datasets[5].data = matriz_hogarT[5];
+actualizador_transporte_elegir_hogarT_grafica.data.datasets[6].data = matriz_hogarT[6];
+actualizador_transporte_elegir_hogarT_grafica.update();
+
+
+//////////////////////////////////////////////////////////////////
+/// Alternativas de transporte para realizar el viaje al hogar ///
+//////////////////////////////////////////////////////////////////
+
+datos_vehiculo_particular_trabajoH =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Vehículo particular]_Trabajo_Hogar"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
+
+datos_transporte_publico_trabajoH =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Transporte público colectivo (micro, Urvan, combi)]_Trabajo_Hogar"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
+
+datos_tuzobus_trabajoH =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Tuzobús]_Trabajo_Hogar"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
+
+datos_taxi_trabajoH =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Taxi]_Trabajo_Hogar"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
+
+datos_bicicleta_trabajoH =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Bicicleta]_Trabajo_Hogar"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
+
+datos_pie_trabajoH =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [A pie]_Trabajo_Hogar"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
+
+datos_auto_compartido_trabajoH =  Object.entries(
+  datos_filtrados.reduce((acc, d) => {
+    const clave = d.properties["De 1 al 7, en donde 7 es menos probable y 1 es más probable. ¿Qué alternativas de transporte elegiría para realizar el viaje hacia su domicilio particular? (Deberá elegir una opción diferente en cada columna) [Auto compartido]_Trabajo_Hogar"];
+    acc[clave] = (acc[clave] || 0) + 1;
+    return acc;
+  }, {...labelsFijos})
+).map(([g, v]) => ({ g, v}));
+
+matriz_trabajoH = unirColumnas(
+  datos_vehiculo_particular_trabajoH.map(d => d.v),
+  datos_transporte_publico_trabajoH.map(d => d.v),
+  datos_tuzobus_trabajoH.map(d => d.v),
+  datos_taxi_trabajoH.map(d => d.v),
+  datos_bicicleta_trabajoH.map(d => d.v),
+  datos_pie_trabajoH.map(d => d.v),
+  datos_auto_compartido_trabajoH.map(d => d.v),
+);
+
+
+actualizador_transporte_elegir_trabajoH_grafica.data.datasets[0].data = matriz_trabajoH[0];
+actualizador_transporte_elegir_trabajoH_grafica.data.datasets[1].data = matriz_trabajoH[1];
+actualizador_transporte_elegir_trabajoH_grafica.data.datasets[2].data = matriz_trabajoH[2];
+actualizador_transporte_elegir_trabajoH_grafica.data.datasets[3].data = matriz_trabajoH[3];
+actualizador_transporte_elegir_trabajoH_grafica.data.datasets[4].data = matriz_trabajoH[4];
+actualizador_transporte_elegir_trabajoH_grafica.data.datasets[5].data = matriz_trabajoH[5];
+actualizador_transporte_elegir_trabajoH_grafica.data.datasets[6].data = matriz_trabajoH[6];
+actualizador_transporte_elegir_trabajoH_grafica.update();
 }
 
 
